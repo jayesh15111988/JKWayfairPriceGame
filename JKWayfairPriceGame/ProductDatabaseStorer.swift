@@ -7,10 +7,8 @@
 //
 
 import BlocksKit
-import MagicalRecord
 import Mantle
 import MTLManagedObjectAdapter
-import MDMCoreData
 import Foundation
 
 protocol ModelStorerProtocol  {
@@ -22,21 +20,13 @@ class ProductDatabaseStorer: ModelStorerProtocol {
     typealias StoreModel = Product
     func storeToDatabaseWith(products: [StoreModel]) {
         
-        let modelURL = NSBundle.mainBundle().URLForResource("JKWayfairPriceGame", withExtension: "momd")
-        let storeURL = NSURL(fileURLWithPath: documentsDirectory()).URLByAppendingPathComponent("JKWayfairPriceGame.sqlite")//[NSURL fileURLWithPath:[[self documentsDirectory] stringByAppendingPathComponent:@"model.sqlite"]];
-        let persistenceController = MDMPersistenceController(storeURL: storeURL, modelURL: modelURL)
-        
         let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         let managedContext = appDelegate!.managedObjectContext
         
         for product in products {
             do {
                 let newProduct = try MTLManagedObjectAdapter.managedObjectFromModel(product, insertingIntoContext: managedContext)
-                let name = newProduct.valueForKey("name")
                 print(newProduct)
-                if let newProduct = newProduct as? Product {
-                    print(newProduct.name)
-                }
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -56,9 +46,9 @@ class ProductDatabaseStorer: ModelStorerProtocol {
             let fetchedResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
         
             if let results = fetchedResult {
-                
+                print("count \(results.count)")
                 for resul in results {
-                    print(resul.objectID)
+                    //print(resul.valueForKey("name"))
                 }
             }
         } catch let error as NSError {

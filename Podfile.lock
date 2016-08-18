@@ -15,27 +15,9 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - MagicalRecord (2.3.2):
-    - MagicalRecord/Core (= 2.3.2)
-  - MagicalRecord/Core (2.3.2)
   - Mantle (2.0.7):
     - Mantle/extobjc (= 2.0.7)
   - Mantle/extobjc (2.0.7)
-  - MDMCoreData (1.5.1):
-    - MDMCoreData/MDMCoreDataCore (= 1.5.1)
-    - MDMCoreData/MDMFetchedResultsCollectionDataSource (= 1.5.1)
-    - MDMCoreData/MDMFetchedResultsTableDataSource (= 1.5.1)
-    - MDMCoreData/MDMPersistenceController (= 1.5.1)
-    - MDMCoreData/NSManagedObject+MDMCoreDataAdditions (= 1.5.1)
-  - MDMCoreData/MDMCoreDataCore (1.5.1)
-  - MDMCoreData/MDMFetchedResultsCollectionDataSource (1.5.1):
-    - MDMCoreData/MDMCoreDataCore
-  - MDMCoreData/MDMFetchedResultsTableDataSource (1.5.1):
-    - MDMCoreData/MDMCoreDataCore
-  - MDMCoreData/MDMPersistenceController (1.5.1):
-    - MDMCoreData/MDMCoreDataCore
-  - MDMCoreData/NSManagedObject+MDMCoreDataAdditions (1.5.1):
-    - MDMCoreData/MDMCoreDataCore
   - MTLManagedObjectAdapter (1.0.3):
     - Mantle (~> 2.0)
     - MTLManagedObjectAdapter/extobjc (= 1.0.3)
@@ -55,9 +37,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.4)
   - BlocksKit (~> 2.2)
-  - MagicalRecord (~> 2.3)
   - Mantle (~> 2.0)
-  - MDMCoreData (~> 1.5)
   - MTLManagedObjectAdapter (~> 1.0)
   - ReactiveCocoa (~> 2.0)
   - SDWebImage (~> 3.7)
@@ -65,13 +45,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
-  MDMCoreData: 28b334173177effeb1dd135da677062096e3cb68
   MTLManagedObjectAdapter: 631a53432675dcf03a9d90624afb3cececf54631
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 82e60d3ef6be375c685fb328acb58713ce7a12e3
+PODFILE CHECKSUM: 42e4995431faede034e77a8643e95d41dabd2b80
 
 COCOAPODS: 1.0.1
