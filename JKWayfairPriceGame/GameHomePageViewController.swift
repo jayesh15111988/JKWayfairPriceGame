@@ -6,12 +6,16 @@
 //  Copyright © 2016 Jayesh Kawli Backup. All rights reserved.
 //
 
+import BlocksKit
 import Foundation
 import UIKit
 
 class GameHomePageViewController: UIViewController {
     
     let viewModel: GameHomePageViewModel
+    var dynamicAnimator: UIDynamicAnimator!
+    var gravityBehaviour: UIGravityBehavior!
+    var dynamicItemBehaviour: UIDynamicItemBehavior!
     
     init(viewModel: GameHomePageViewModel) {
         self.viewModel = viewModel
@@ -23,6 +27,8 @@ class GameHomePageViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
+        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         self.view.backgroundColor = UIColor.whiteColor()
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,10 +45,20 @@ class GameHomePageViewController: UIViewController {
         gameStartButton.setTitleColor(.blackColor(), forState: .Normal)
         self.view.addSubview(gameStartButton)
         
-        let views = ["gameStartButton": gameStartButton]
+        let funButton = UIButton(type: .System)
+        funButton.translatesAutoresizingMaskIntoConstraints = false
+        funButton.setTitle("Make Fun", forState: .Normal)
+        funButton.setTitleColor(.blackColor(), forState: .Normal)
+        funButton.bk_whenTapped { 
+            self.makeTransition()
+        }
+        self.view.addSubview(funButton)
+        
+        let views = ["gameStartButton": gameStartButton, "funButton": funButton]
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[gameStartButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-100-[gameStartButton(44)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-100-[gameStartButton(44)]-[funButton(44)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[funButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
         RACObserve(viewModel, keyPath: "productsLoading").deliverOnMainThread().subscribeNext { (loading) in
             if let loading = loading as? Bool {
@@ -66,6 +82,30 @@ class GameHomePageViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func makeTransition() {
+        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, true, 0)
+        self.view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let currentViewScreenshot = UIGraphicsGetImageFromCurrentImageContext()
+        let frontConverImageView = UIImageView(image: currentViewScreenshot)
+        frontConverImageView.frame = self.view.bounds
+        self.view.addSubview(frontConverImageView)
+        self.view.backgroundColor = .redColor()
         
+        gravityBehaviour = UIGravityBehavior(items: [frontConverImageView])
+        dynamicItemBehaviour = UIDynamicItemBehavior(items: [frontConverImageView])
+        dynamicItemBehaviour.density = 3.0
+        gravityBehaviour.gravityDirection = CGVectorMake (3.0, 2.0)
+        gravityBehaviour.action = {
+            if (frontConverImageView.frame.intersects(self.view.frame) == false) {
+                frontConverImageView.removeFromSuperview()
+            }
+        }
+        
+        self.dynamicAnimator.removeAllBehaviors()
+        dynamicItemBehaviour.addAngularVelocity(CGFloat(0.4), forItem: frontConverImageView)
+        dynamicAnimator.addBehavior(dynamicItemBehaviour)
+        dynamicAnimator.addBehavior(gravityBehaviour)
     }
 }
