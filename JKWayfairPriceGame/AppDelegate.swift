@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        var val = arc4random_uniform(10)
+        val = arc4random_uniform(3)
+        val = arc4random_uniform(100)
+        val = arc4random_uniform(300)
         //MagicalRecord.setupCoreDataStackWithStoreNamed("ProductsFactory")
         let homePageViewModel = GameHomePageViewModel()
         let homePageViewController = GameHomePageViewController(viewModel: homePageViewModel)

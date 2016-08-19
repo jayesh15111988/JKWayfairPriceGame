@@ -95,14 +95,15 @@ class GameHomePageViewController: UIViewController {
         
         gravityBehaviour = UIGravityBehavior(items: [frontConverImageView])
         dynamicItemBehaviour = UIDynamicItemBehavior(items: [frontConverImageView])
-        dynamicItemBehaviour.density = 3.0
-        gravityBehaviour.gravityDirection = CGVectorMake (3.0, 2.0)
+        dynamicItemBehaviour.density = CGFloat(arc4random_uniform(5))
+        gravityBehaviour.gravityDirection = CGVectorMake (CGFloat(arc4random_uniform(10)) - 8, CGFloat(arc4random_uniform(10)) - 8)
         gravityBehaviour.action = {
             if (frontConverImageView.frame.intersects(self.view.frame) == false) {
                 frontConverImageView.removeFromSuperview()
+                self.dynamicAnimator.removeAllBehaviors()
             }
-        }
-        
+        }                
+
         self.dynamicAnimator.removeAllBehaviors()
         dynamicItemBehaviour.addAngularVelocity(CGFloat(0.4), forItem: frontConverImageView)
         dynamicAnimator.addBehavior(dynamicItemBehaviour)
