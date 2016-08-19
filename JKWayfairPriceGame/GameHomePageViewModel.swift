@@ -7,11 +7,41 @@
 //
 
 import Foundation
+import CoreData
 
-class GameHomePageViewModel {
+class GameHomePageViewModel: NSObject {
     
+    var productsCollection: [NSManagedObject]
+    var errorMessage: String
+    var productsLoading: Bool
+
+    override init() {
+        
+        productsCollection = []
+        errorMessage = ""
+        productsLoading = true
+        super.init()
+        if let productsStored = NSUserDefaults.standardUserDefaults().objectForKey(ProductStorageIndicatorKey.ProductStored.rawValue) as? Bool where productsStored == true {
+            let result = ProductDatabaseStorer().productsFromDatabase()
+            validateProducts(result)
+        } else {
+            loadProdcutsFromAPI()
+        }
+    }
     
-    init() {
-        ProductApi.sharedInstance.productsWith("419247", format: .json)
+    func loadProdcutsFromAPI() {
+        ProductApi.sharedInstance.productsWith("419247", format: .json, completion: { result in
+            self.validateProducts(result)
+        })
+    }
+    
+    func validateProducts(result: Result) {
+        self.productsLoading = false
+        switch result {
+        case let .Success(records):
+            productsCollection = records
+        case let .Failure(error):
+            errorMessage = error.localizedDescription
+        }
     }
 }
