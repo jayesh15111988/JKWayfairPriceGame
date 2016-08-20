@@ -15,6 +15,7 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
     var averageOverallRating: NSNumber = 0
     var imageURL: NSURL? = nil
     var listPrice: NSNumber = 0
+    var listPriceRounded: NSNumber = 0
     var manufacturerIdentifier: NSNumber = 0
     var manufacturerName: String = ""
     var name: String = ""
@@ -26,6 +27,7 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
         return ["averageOverallRating": "average_overall_rating",
         "imageURL": "image_url",
         "listPrice": "list_price",
+        "listPriceRounded": "list_price",
         "manufacturerIdentifier": "manufacturer_id",
         "manufacturerName": "manufacturer_name",
         "name": "name",
@@ -42,6 +44,15 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
         return NSValueTransformer(forName: MTLURLValueTransformerName)!
     }
     
+    static func listPriceRoundedJSONTransformer() -> NSValueTransformer {
+        return MTLValueTransformer.transformerWithBlock({ (originalListPrice) -> AnyObject! in
+            if let originalListPrice = originalListPrice as? NSNumber {
+                return round(originalListPrice.doubleValue)
+            }
+            return 0
+        })
+    }
+    
     // MARK: MTLManagedObjectSerializing
     static func managedObjectEntityName() -> String! {
         return "Product"
@@ -51,6 +62,7 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
         return ["averageOverallRating": "averageOverallRating",
                 "imageURL": "imageURL",
                 "listPrice": "listPrice",
+                "listPriceRounded": "listPriceRounded",
                 "manufacturerIdentifier": "manufacturerIdentifier",
                 "manufacturerName": "manufacturerName",
                 "name": "name",
