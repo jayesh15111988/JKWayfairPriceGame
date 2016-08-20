@@ -26,8 +26,9 @@ class ProductWebViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .whiteColor()
+        self.title = self.viewModel.product.name
         self.view.addSubview(self.webView)
-        self.webView.loadRequest(NSURLRequest(URL: self.viewModel.webURL))
+        self.webView.loadRequest(NSURLRequest(URL: self.viewModel.product.productURL!))
     }
     
     func webViewDidStartLoad(webView: UIWebView) {

@@ -10,9 +10,9 @@ import Foundation
 
 class ProductWebViewerViewModel: NSObject {
     
-    let webURL: NSURL
+    let product: Product
     
-    init(webURL: NSURL) {
-        self.webURL = webURL
+    init(product: Product) {
+        self.product = product
     }
 }
