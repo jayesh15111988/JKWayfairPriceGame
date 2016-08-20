@@ -10,13 +10,9 @@ import Foundation
 
 class QuizQuestion: NSObject {
     
-    let title: String
-    let productURL: NSURL?
     let options: [QuizOption]
     
-    init(title: String, productURL: NSURL?, options: [QuizOption]) {
-        self.title = title
-        self.productURL = productURL
+    init(options: [QuizOption]) {        
         self.options = options
         super.init()
     }
