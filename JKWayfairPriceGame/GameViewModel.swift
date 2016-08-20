@@ -37,8 +37,8 @@ class GameViewModel: NSObject {
         })
         
         self.viewProductOnlineActionCommand = RACCommand(signalBlock: { (signal) -> RACSignal! in
-            if let productURL = self.selectedProduct?.productURL {
-                self.productWebViewerViewModel = ProductWebViewerViewModel(webURL: productURL)
+            if let selectedProduct = self.selectedProduct {
+                self.productWebViewerViewModel = ProductWebViewerViewModel(product: selectedProduct)
             }
             return RACSignal.empty()
         })
