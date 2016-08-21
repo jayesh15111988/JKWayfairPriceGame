@@ -13,12 +13,12 @@ import Foundation
 
 protocol ModelStorerProtocol  {
     associatedtype StoreModel: MTLJSONSerializing, MTLManagedObjectSerializing
-    func objectsStoredToDatabaseWithProducts(models: [StoreModel]) -> Result
+    func objectsStoredToDatabaseWithProducts(models: [StoreModel], categoryIdentifier: String) -> Result
 }
 
 class ProductDatabaseStorer: ModelStorerProtocol {
     typealias StoreModel = Product
-    func objectsStoredToDatabaseWithProducts(products: [StoreModel]) -> Result {
+    func objectsStoredToDatabaseWithProducts(products: [StoreModel], categoryIdentifier: String) -> Result {
         
         let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         let managedContext = appDelegate!.managedObjectContext
@@ -38,13 +38,17 @@ class ProductDatabaseStorer: ModelStorerProtocol {
         } catch let error as  NSError {
             print("Error in saving the managed context \(error.localizedDescription)")
         }
-        return productsFromDatabase()
+        
+        return productsFromDatabaseWith(categoryIdentifier, entityType: ModelType.Product)
     }
     
-    func productsFromDatabase() -> Result {
+    func productsFromDatabaseWith(categoryIdentifier: String, entityType: ModelType) -> Result {
         let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         let managedContext = appDelegate!.managedObjectContext
-        let fetchRequest   = NSFetchRequest(entityName: ModelType.Product.rawValue)
+        let fetchRequest   = NSFetchRequest(entityName: entityType.rawValue)
+        let predicate = NSPredicate(format: "categoryIdentifier == %@", categoryIdentifier)
+        fetchRequest.predicate = predicate
+        
         do {
             let fetchedResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
             
@@ -52,7 +56,22 @@ class ProductDatabaseStorer: ModelStorerProtocol {
             if let results = fetchedResult {
                 records = results
             }
-            return .Success(records)
+            
+            if entityType == ModelType.Product {
+                var tempProducts: [Product] = []
+                
+                for record in records {
+                    do {
+                        if let productModel = try MTLManagedObjectAdapter.modelOfClass(Product.self, fromManagedObject: record) as? Product {
+                            tempProducts.append(productModel)
+                        }
+                    } catch let error as NSError {
+                        print("Failed to convert NSManagedobject to Model Object. Failed with error \(error.localizedDescription)")
+                    }
+                }
+                return .SuccessMantleModels(tempProducts)
+            }
+            return .SuccessMantleModels([])
         } catch let error as NSError {
             return .Failure(error)
         }

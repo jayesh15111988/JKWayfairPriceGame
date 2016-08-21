@@ -130,7 +130,8 @@ class GameViewController: UIViewController {
         RACObserve(self.gameViewModel, keyPath: "finalQuizScoreViewModel").ignore(nil).subscribeNext {
             (finalQuizScoreViewModel) in
             if let finalQuizScoreViewModel = finalQuizScoreViewModel as? FinalScoreIndicatorViewModel {
-                let finalQuizScoreView = FinalScoreIndicatorView(viewModel: finalQuizScoreViewModel, frame: CGRectMake(-200, -200, self.view.frame.width - 20, 200))
+                let viewWidth = self.view.frame.width > 300 ? 300 : self.view.frame.width
+                let finalQuizScoreView = FinalScoreIndicatorView(viewModel: finalQuizScoreViewModel, frame: CGRectMake(-200, -200, viewWidth, 200))
                 self.view.addSubview(finalQuizScoreView)
                 self.snapBehavior = UISnapBehavior(item: finalQuizScoreView, snapToPoint: self.view.center)
                 self.snapBehavior?.damping = 0.4

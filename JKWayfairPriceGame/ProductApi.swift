@@ -26,7 +26,8 @@ enum ProductStorageIndicatorKey: String {
 }
 
 enum Result {
-    case Success([NSManagedObject])
+    case SuccessCoreDataModels([NSManagedObject])
+    case SuccessMantleModels([MTLModel])
     case Failure(NSError)
 }
 
@@ -52,8 +53,8 @@ class ProductApi {
                                     product.categoryIdentifier = categoryIdentifier
                                 }
                                 
-                                let result = ProductDatabaseStorer().objectsStoredToDatabaseWithProducts(productsCollection)
-                                completion(result)
+                                ProductDatabaseStorer().objectsStoredToDatabaseWithProducts(productsCollection, categoryIdentifier: categoryIdentifier)
+                                completion(.SuccessMantleModels(productsCollection))
                             }
                         } catch let error as NSError {
                             completion(.Failure(error))
@@ -61,7 +62,7 @@ class ProductApi {
                     } else if let collection = data["subcategories"] as? [[String: AnyObject]] {
                         do {
                             if let productCategoriesCollection = try MTLJSONAdapter.modelsOfClass(ProductCategory.self, fromJSONArray: collection) as? [ProductCategory] {
-                                
+                                completion(.SuccessMantleModels(productCategoriesCollection))
                             }
                         } catch let error as NSError {
                             completion(.Failure(error))
@@ -71,7 +72,7 @@ class ProductApi {
                     completion(.Failure(NSError(domain: "WFProducts", code: 100, userInfo: [NSLocalizedDescriptionKey: "Could not parse incoming json to expected format"])))
                 }
             case .Failure(let error):
-                completion(Result.Failure(error))
+                completion(.Failure(error))
             }
         }
     }
