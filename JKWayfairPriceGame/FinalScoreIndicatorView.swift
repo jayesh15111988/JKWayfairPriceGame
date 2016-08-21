@@ -44,6 +44,7 @@ class FinalScoreIndicatorView: UIView {
         gameStatsLabel.numberOfLines = 0
         gameStatsLabel.textAlignment = .Center
         gameStatsLabel.text = self.viewModel.totalStats
+        gameStatsLabel.textColor = self.viewModel.finalScoreLabelTextColor
         self.addSubview(gameStatsLabel)
         
         let views = ["gameStatsLabel": gameStatsLabel, "goBackButton": goBackButton, "newGameButton": newGameButton, "viewStatisticsButton": viewStatisticsButton]

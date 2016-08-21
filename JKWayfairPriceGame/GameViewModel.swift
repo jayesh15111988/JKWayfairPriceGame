@@ -18,6 +18,7 @@ class GameViewModel: NSObject {
     var questionIndex: Int = 0
     var skipCount: Int = 0
     var totalScore: Int
+    var answersCollection: [QuizAnswer]
     
     dynamic var enableViewInteraction: Bool = true
     dynamic var goBackToHomePage: Bool = false
@@ -34,10 +35,12 @@ class GameViewModel: NSObject {
         self.products = products
         self.selectedOptionIndex = 0
         self.totalScore = 0
-
+        self.answersCollection = []
+        
         super.init()
         self.skipQuestionActionCommand = RACCommand(signalBlock: { (signal) -> RACSignal! in
             self.skipCount = self.skipCount + 1
+            self.addToAnswersCollectionWithSelectedOptionIndex(-1)
             self.jumpToNextQuestion()
             return RACSignal.empty()
         })
@@ -66,11 +69,18 @@ class GameViewModel: NSObject {
             if let index = index as? Int {
                 let selectedOption = self.questionObject?.options[index]
                 self.totalScore = selectedOption?.isCorrectOption == true ? self.totalScore + self.pointsPerCorrectAnswer : self.totalScore
+                self.addToAnswersCollectionWithSelectedOptionIndex(index)
                 self.jumpToNextQuestion()
             }
         }
         
         self.generateRandomProductQuiz()
+    }
+    
+    func addToAnswersCollectionWithSelectedOptionIndex(index: Int) {
+        if let selectedProduct = self.selectedProduct, questionObject = self.questionObject {
+            self.answersCollection.append(QuizAnswer(title: selectedProduct.name, options: questionObject.options, selectedOption: index))
+        }
     }
     
     func handleFinalScoreScreenOption(option: ScoreOption.FinalScoreScreenOption) {
@@ -100,22 +110,8 @@ class GameViewModel: NSObject {
     }
     
     func priceOptionsOffsetForScore(score: Int) -> Int {
-        
         let percentageCorrect = Double(score/pointsPerCorrectAnswer)/Double(self.questionIndex + 1)
-        var optionsOffsetFromOriginalPrice = 0
-        
-        switch percentageCorrect {
-        case 0..<0.4:
-            optionsOffsetFromOriginalPrice = 12
-        case 0.4..<0.7:
-            optionsOffsetFromOriginalPrice = 8
-        case 0.7..<1.0:
-            optionsOffsetFromOriginalPrice = 4
-        default:
-            optionsOffsetFromOriginalPrice = 2
-        }
-    
-        return optionsOffsetFromOriginalPrice
+        return QuizCustomOptions(score: percentageCorrect).priceOptionsOffset()
     }
     
     func resetParameters() {
@@ -123,5 +119,6 @@ class GameViewModel: NSObject {
         questionIndex = 0
         skipCount = 0
         totalScore = 0
+        answersCollection = []
     }
 }

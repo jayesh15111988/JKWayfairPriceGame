@@ -31,6 +31,8 @@
 		38592DC71D6896620051E62F /* ProductWebViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DC61D6896620051E62F /* ProductWebViewerViewModel.swift */; };
 		38592DC91D690B910051E62F /* FinalScoreIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DC81D690B910051E62F /* FinalScoreIndicatorView.swift */; };
 		38592DCB1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DCA1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift */; };
+		38592DCD1D6935C20051E62F /* QuizAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DCC1D6935C20051E62F /* QuizAnswer.swift */; };
+		38592DCF1D693B630051E62F /* QuizCustomOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DCE1D693B630051E62F /* QuizCustomOptions.swift */; };
 		388B24EB1D66A69F00638688 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EA1D66A69F00638688 /* RACObserve.swift */; };
 		388B24ED1D66A6BF00638688 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EC1D66A6BF00638688 /* RAC.swift */; };
 		388B24EF1D66A6FB00638688 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */; };
@@ -78,6 +80,8 @@
 		38592DC61D6896620051E62F /* ProductWebViewerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductWebViewerViewModel.swift; sourceTree = "<group>"; };
 		38592DC81D690B910051E62F /* FinalScoreIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalScoreIndicatorView.swift; sourceTree = "<group>"; };
 		38592DCA1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalScoreIndicatorViewModel.swift; sourceTree = "<group>"; };
+		38592DCC1D6935C20051E62F /* QuizAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizAnswer.swift; sourceTree = "<group>"; };
+		38592DCE1D693B630051E62F /* QuizCustomOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCustomOptions.swift; sourceTree = "<group>"; };
 		388B24EA1D66A69F00638688 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACObserve.swift; sourceTree = "<group>"; };
 		388B24EC1D66A6BF00638688 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
 		388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACSignal+Extensions.swift"; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				38592DB91D67F5620051E62F /* QuizQuestion.swift */,
 				38592DBD1D68073B0051E62F /* QuizOption.swift */,
 				38592DC61D6896620051E62F /* ProductWebViewerViewModel.swift */,
+				38592DCC1D6935C20051E62F /* QuizAnswer.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				388B24F11D66BD6700638688 /* Random.swift */,
+				38592DCE1D693B630051E62F /* QuizCustomOptions.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -423,6 +429,7 @@
 				388B24ED1D66A6BF00638688 /* RAC.swift in Sources */,
 				381F11D21D64170E008C3A4E /* ProductDatabaseStorer.swift in Sources */,
 				381F11A21D6400EA008C3A4E /* ViewController.swift in Sources */,
+				38592DCD1D6935C20051E62F /* QuizAnswer.swift in Sources */,
 				381F11A81D6400EA008C3A4E /* JKWayfairPriceGame.xcdatamodeld in Sources */,
 				381F11CC1D64053A008C3A4E /* GameHomePageViewModel.swift in Sources */,
 				38592DB61D67F26C0051E62F /* GameViewModel.swift in Sources */,
@@ -434,6 +441,7 @@
 				388B24EB1D66A69F00638688 /* RACObserve.swift in Sources */,
 				388B24F21D66BD6700638688 /* Random.swift in Sources */,
 				38592DC01D6823510051E62F /* OptionsView.swift in Sources */,
+				38592DCF1D693B630051E62F /* QuizCustomOptions.swift in Sources */,
 				38592DB81D67F3A10051E62F /* GameViewController.swift in Sources */,
 				38592DC71D6896620051E62F /* ProductWebViewerViewModel.swift in Sources */,
 				38592DC51D68964C0051E62F /* ProductWebViewController.swift in Sources */,

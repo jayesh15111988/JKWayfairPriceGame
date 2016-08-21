@@ -26,11 +26,18 @@ class FinalScoreIndicatorViewModel: NSObject {
     var viewStatisticsButtonActionCommand: RACCommand?
     let gameViewModel: GameViewModel
     let totalStats: String
+    let finalScoreLabelTextColor: UIColor
     
     init(gameViewModel: GameViewModel) {
         self.finalScoreScreenOption = .GoBack
         self.gameViewModel = gameViewModel
-        self.totalStats = "Total Questions: \(gameViewModel.questionIndex + 1)\n\nSkipped Questions: \(gameViewModel.skipCount)\n\nCorrect Answers: \(gameViewModel.totalScore/gameViewModel.pointsPerCorrectAnswer)\n\nTotal Score: \(gameViewModel.totalScore)\n\n"
+        let numberOfCorrectAnswers = gameViewModel.totalScore/gameViewModel.pointsPerCorrectAnswer
+        let totalNumberOfQuestions = gameViewModel.questionIndex + 1
+        let fractionAnswersCorrect = Double(numberOfCorrectAnswers)/Double(totalNumberOfQuestions)
+        let percentageAnswersCorrect = Int(fractionAnswersCorrect * 100)
+        self.finalScoreLabelTextColor = QuizCustomOptions(score: fractionAnswersCorrect).textColor()
+         
+        self.totalStats = "Total Questions: \(totalNumberOfQuestions)\n\nSkipped: \(gameViewModel.skipCount)\n\nCorrect: \(numberOfCorrectAnswers)\n\nTotal Score: \(gameViewModel.totalScore) / \(percentageAnswersCorrect)%%"
         super.init()
         
         self.goBackButtonActionCommand = RACCommand(signalBlock: { (signal) -> RACSignal! in
