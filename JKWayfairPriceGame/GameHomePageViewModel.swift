@@ -9,16 +9,20 @@
 import Foundation
 import CoreData
 import ReactiveCocoa
+import Mantle
 import MTLManagedObjectAdapter
 
 class GameHomePageViewModel: NSObject {
     
+    let defaultCategoryIdentifier = "419247"
     dynamic var productsCollection: [Product]
     dynamic var productCategoriesCollection: [ProductCategory]
     dynamic var errorMessage: String
     dynamic var productsLoading: Bool
     var categoryIdentifier: String
     var startGameActionCommand: RACCommand?
+    var startGameWithDefaultActionCommand: RACCommand?
+    var resetCategoriesActionCommand: RACCommand?
     dynamic var gameViewModel: GameViewModel?
 
     override init() {
@@ -26,24 +30,55 @@ class GameHomePageViewModel: NSObject {
         self.productCategoriesCollection = []
         self.errorMessage = ""
         self.productsLoading = false
-        self.categoryIdentifier = "419247"
+        self.categoryIdentifier = defaultCategoryIdentifier
+        
         super.init()
         
-        startGameActionCommand = RACCommand(signalBlock: {[unowned self] (val) -> RACSignal! in
-            let storedProductsResult = ProductDatabaseStorer().productsFromDatabaseWith(self.categoryIdentifier, entityType: ModelType.Product)
-            switch storedProductsResult {
-                case .SuccessMantleModels(_):
-                    self.validateProducts(storedProductsResult)
-                case let Result.Failure(error):
-                    print("Failed to retrieve data from database with error \(error.localizedDescription)")
-                default:
-                    print("Unable to fetch records from database")
-            }
+        self.loadBaseCategories()
+        
+        startGameActionCommand = RACCommand(signalBlock: { [unowned self] (_) -> RACSignal! in
+            self.searchWithSelectedCategoryIdentifier(self.categoryIdentifier)
             return RACSignal.empty()
         })
+        
+        startGameWithDefaultActionCommand = RACCommand(signalBlock: { [unowned self] (_) -> RACSignal! in
+            self.searchWithSelectedCategoryIdentifier(self.defaultCategoryIdentifier)
+            return RACSignal.empty()
+        })
+        
+        resetCategoriesActionCommand = RACCommand(signalBlock: { [unowned self] (_) -> RACSignal! in
+            self.productsCollection = []
+            self.loadBaseCategories()
+            return RACSignal.empty()
+            })
     }
     
-func loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier: String) {
+    func loadBaseCategories() {
+        if let baseProductCategories = JSONReader().readJSONFromFileWith("ProductBaseCategories") as? [String: AnyObject], let categoriesCollection = baseProductCategories["subcategories"] as? [[String: AnyObject]] {
+            do {
+                if let productCategoriesCollection = try MTLJSONAdapter.modelsOfClass(ProductCategory.self, fromJSONArray: categoriesCollection) as? [ProductCategory] {
+                    self.productCategoriesCollection = productCategoriesCollection
+                }
+            } catch let error as NSError {
+                print("Failed to load base product categories. Failed with error \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func searchWithSelectedCategoryIdentifier(categoryIdentifier: String) {
+        self.categoryIdentifier = categoryIdentifier
+        let storedProductsResult = ProductDatabaseStorer().productsFromDatabaseWith(categoryIdentifier, entityType: ModelType.Product)
+        switch storedProductsResult {
+            case .SuccessMantleModels(_):
+                self.validateProducts(storedProductsResult)
+            case let Result.Failure(error):
+                print("Failed to retrieve data from database with error \(error.localizedDescription)")
+            default:
+                print("Unable to fetch records from database")
+        }
+    }
+    
+    func loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier: String) {
         self.productsLoading = true
         ProductApi.sharedInstance.productsWith(categoryIdentifier, format: .json, completion: { result in
             self.validateProducts(result)
@@ -51,6 +86,7 @@ func loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier: String) {
     }
     
     func validateProducts(result: Result) {
+        self.productsLoading = false
         switch result {
         case let .SuccessMantleModels(models):
             if models.count > 0 {
@@ -58,7 +94,7 @@ func loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier: String) {
                     productsCollection = models
                     self.gameViewModel = GameViewModel(products: self.productsCollection)
                 } else if let models = models as? [ProductCategory] {
-                    productCategoriesCollection = models
+                    productCategoriesCollection = models                    
                 }
             } else {
                 self.loadProductsFromAPIwithCategoryIdentifier(self.categoryIdentifier)

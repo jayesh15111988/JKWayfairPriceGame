@@ -13,7 +13,7 @@ class ProductCategory: MTLModel, MTLJSONSerializing {
     var categoryName: String = ""
     var imageURL: NSURL?
     var categoryURL: NSURL?
-    var categoryIdentifier: String = ""
+    var categoryIdentifier: NSNumber = 0
     
     static func JSONKeyPathsByPropertyKey() -> [NSObject : AnyObject]! {
         return ["categoryName": "category_name",

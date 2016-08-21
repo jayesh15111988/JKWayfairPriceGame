@@ -36,6 +36,8 @@
 		38592DD11D6940550051E62F /* GameAnswersStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DD01D6940550051E62F /* GameAnswersStatisticsViewController.swift */; };
 		38592DD41D69430B0051E62F /* GameAnswersStatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DD31D69430B0051E62F /* GameAnswersStatisticsTableViewCell.swift */; };
 		38592DD61D6959B20051E62F /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DD51D6959B20051E62F /* ProductCategory.swift */; };
+		38592DD81D6A5CEB0051E62F /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DD71D6A5CEB0051E62F /* JSONReader.swift */; };
+		38592DDB1D6A5E680051E62F /* ProductBaseCategories.json in Resources */ = {isa = PBXBuildFile; fileRef = 38592DDA1D6A5E680051E62F /* ProductBaseCategories.json */; };
 		388B24EB1D66A69F00638688 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EA1D66A69F00638688 /* RACObserve.swift */; };
 		388B24ED1D66A6BF00638688 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EC1D66A6BF00638688 /* RAC.swift */; };
 		388B24EF1D66A6FB00638688 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */; };
@@ -88,6 +90,8 @@
 		38592DD01D6940550051E62F /* GameAnswersStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAnswersStatisticsViewController.swift; sourceTree = "<group>"; };
 		38592DD31D69430B0051E62F /* GameAnswersStatisticsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAnswersStatisticsTableViewCell.swift; sourceTree = "<group>"; };
 		38592DD51D6959B20051E62F /* ProductCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
+		38592DD71D6A5CEB0051E62F /* JSONReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReader.swift; sourceTree = "<group>"; };
+		38592DDA1D6A5E680051E62F /* ProductBaseCategories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProductBaseCategories.json; sourceTree = "<group>"; };
 		388B24EA1D66A69F00638688 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACObserve.swift; sourceTree = "<group>"; };
 		388B24EC1D66A6BF00638688 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
 		388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACSignal+Extensions.swift"; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 		381F119E1D6400EA008C3A4E /* JKWayfairPriceGame */ = {
 			isa = PBXGroup;
 			children = (
+				38592DD91D6A5E3F0051E62F /* JSONs */,
 				38592DD21D6941B10051E62F /* Cells */,
 				38592DC11D68949A0051E62F /* Assets */,
 				38592DB21D67D50D0051E62F /* Extensions */,
@@ -262,6 +267,14 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		38592DD91D6A5E3F0051E62F /* JSONs */ = {
+			isa = PBXGroup;
+			children = (
+				38592DDA1D6A5E680051E62F /* ProductBaseCategories.json */,
+			);
+			name = JSONs;
+			sourceTree = "<group>";
+		};
 		388B24E71D66A5C000638688 /* Reactive Cocoa Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +290,7 @@
 			children = (
 				388B24F11D66BD6700638688 /* Random.swift */,
 				38592DCE1D693B630051E62F /* QuizCustomOptions.swift */,
+				38592DD71D6A5CEB0051E62F /* JSONReader.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -373,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38592DDB1D6A5E680051E62F /* ProductBaseCategories.json in Resources */,
 				381F11AD1D6400EA008C3A4E /* LaunchScreen.storyboard in Resources */,
 				38592DC31D6894AB0051E62F /* placeholder_image.png in Resources */,
 				381F11AA1D6400EA008C3A4E /* Assets.xcassets in Resources */,
@@ -461,6 +476,7 @@
 				38592DC01D6823510051E62F /* OptionsView.swift in Sources */,
 				38592DCF1D693B630051E62F /* QuizCustomOptions.swift in Sources */,
 				38592DB81D67F3A10051E62F /* GameViewController.swift in Sources */,
+				38592DD81D6A5CEB0051E62F /* JSONReader.swift in Sources */,
 				38592DC71D6896620051E62F /* ProductWebViewerViewModel.swift in Sources */,
 				38592DC51D68964C0051E62F /* ProductWebViewController.swift in Sources */,
 				38592DD41D69430B0051E62F /* GameAnswersStatisticsTableViewCell.swift in Sources */,

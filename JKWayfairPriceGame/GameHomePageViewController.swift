@@ -10,12 +10,21 @@ import BlocksKit
 import Foundation
 import UIKit
 
-class GameHomePageViewController: UIViewController {
+class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let viewModel: GameHomePageViewModel
+    let categoryInputTextField: UITextField
+    var selectedCategoryIdentifier: String
     
     init(viewModel: GameHomePageViewModel) {
         self.viewModel = viewModel
+        self.selectedCategoryIdentifier = ""
+        self.categoryInputTextField = UITextField()
+        self.categoryInputTextField.translatesAutoresizingMaskIntoConstraints = false
+        self.categoryInputTextField.borderStyle = .Line
+        self.categoryInputTextField.textAlignment = .Center
+        self.categoryInputTextField.font = UIFont.systemFontOfSize(16)
+        self.categoryInputTextField.placeholder = "Please Choose Product Category"
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,22 +55,49 @@ class GameHomePageViewController: UIViewController {
         gameInstructionsTextView.translatesAutoresizingMaskIntoConstraints = false
         gameInstructionsTextView.selectable = false
         gameInstructionsTextView.editable = false
+        gameInstructionsTextView.font = UIFont.systemFontOfSize(16)
         gameInstructionsTextView.text = "adasd\nadasda\nasdasd\nasdasdas\nasdasdas\nasdasdasdas\nasdasd\n"
         contentView.addSubview(gameInstructionsTextView)
         
-        let gameStartButton = UIButton(type: .System)
-        gameStartButton.translatesAutoresizingMaskIntoConstraints = false
-        gameStartButton.setTitle("Begin Game", forState: .Normal)
-        gameStartButton.setTitleColor(.blackColor(), forState: .Normal)
-        gameStartButton.rac_command = self.viewModel.startGameActionCommand
-        contentView.addSubview(gameStartButton)
+        let pickerView = UIPickerView()
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.width, 44))
+        toolbar.items = [UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancelSelection)), UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(finishSelection))]
+            
+        categoryInputTextField.inputView = pickerView
+        categoryInputTextField.inputAccessoryView = toolbar
+        contentView.addSubview(categoryInputTextField)
+        
+        let beginGameButton = UIButton(type: .System)
+        beginGameButton.translatesAutoresizingMaskIntoConstraints = false
+        beginGameButton.setTitle("Begin Game", forState: .Normal)
+        beginGameButton.setTitleColor(.blackColor(), forState: .Normal)
+        beginGameButton.rac_command = self.viewModel.startGameActionCommand
+        contentView.addSubview(beginGameButton)
+        
+        let beginGameWithDefaultsButton = UIButton(type: .System)
+        beginGameWithDefaultsButton.translatesAutoresizingMaskIntoConstraints = false
+        beginGameWithDefaultsButton.setTitle("Begin Game with defaults", forState: .Normal)
+        beginGameWithDefaultsButton.setTitleColor(.blackColor(), forState: .Normal)
+        beginGameWithDefaultsButton.rac_command = self.viewModel.startGameWithDefaultActionCommand
+        contentView.addSubview(beginGameWithDefaultsButton)
+        
+        let resetCategoriesButton = UIButton(type: .System)
+        resetCategoriesButton.translatesAutoresizingMaskIntoConstraints = false
+        resetCategoriesButton.setTitle("Reset Categories", forState: .Normal)
+        resetCategoriesButton.setTitleColor(.blackColor(), forState: .Normal)
+        resetCategoriesButton.rac_command = self.viewModel.resetCategoriesActionCommand
+        contentView.addSubview(resetCategoriesButton)
         
         self.view.addSubview(activityIndicatorView)
         self.view.addConstraint(NSLayoutConstraint(item: activityIndicatorView, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1.0, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: activityIndicatorView, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1.0, constant: 0))
         
         let topLayoutGuide = self.topLayoutGuide
-        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "gameStartButton": gameStartButton, "gameInstructionsTextView": gameInstructionsTextView, "contentView": contentView, "scrollView": scrollView]
+        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "beginGameButton": beginGameButton, "gameInstructionsTextView": gameInstructionsTextView, "contentView": contentView, "scrollView": scrollView, "categoryInputTextField": categoryInputTextField, "beginGameWithDefaultsButton": beginGameWithDefaultsButton, "resetCategoriesButton": resetCategoriesButton]
         
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: 0))
@@ -72,20 +108,28 @@ class GameHomePageViewController: UIViewController {
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[gameStartButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[categoryInputTextField]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[beginGameButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[beginGameWithDefaultsButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[resetCategoriesButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[gameInstructionsTextView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[gameInstructionsTextView(150)]-[gameStartButton(44)]-40-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[gameInstructionsTextView(150)]-[categoryInputTextField(34)]-[beginGameButton(44)]-[beginGameWithDefaultsButton(44)]-[resetCategoriesButton(44)]-40-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
         RACObserve(viewModel, keyPath: "productsLoading").subscribeNext { (loading) in
             if let loading = loading as? Bool {
                 if (loading == true) {
-                    gameStartButton.alpha = 0.5
                     activityIndicatorView.startAnimating()
                 } else {
-                    gameStartButton.alpha = 1.0
                     activityIndicatorView.stopAnimating()
                 }
-                gameStartButton.enabled = !loading
+            }
+        }
+        
+        RACObserve(viewModel, keyPath: "productsCollection").ignore(nil).subscribeNext { (products) in
+            if let products = products as? [Product] {
+                beginGameButton.userInteractionEnabled = products.count > 0
+                beginGameButton.alpha = products.count > 0 ? 1.0 : 0.5
             }
         }
         
@@ -105,5 +149,42 @@ class GameHomePageViewController: UIViewController {
                 self.navigationController?.pushViewController(gameViewController, animated: true)
             }
         }
+        
+        RACObserve(viewModel, keyPath: "productCategoriesCollection").ignore(nil).subscribeNext { (productCategoriesCollection) in
+            if let productCategoriesCollection = productCategoriesCollection as? [ProductCategory] {
+                self.categoryInputTextField.text = productCategoriesCollection[0].categoryName
+                self.selectedCategoryIdentifier = String(productCategoriesCollection[0].categoryIdentifier)
+                pickerView.reloadAllComponents()
+                pickerView.selectRow(0, inComponent: 0, animated: false)
+                self.categoryInputTextField.becomeFirstResponder()
+            }
+        }
+    }
+    
+    func finishSelection() {
+        self.categoryInputTextField.resignFirstResponder()        
+        self.viewModel.searchWithSelectedCategoryIdentifier(self.selectedCategoryIdentifier)
+    }
+    
+    func cancelSelection() {
+        self.categoryInputTextField.resignFirstResponder()
+    }
+    
+    //MARK: UIPickerView datasource and delegate methods
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.viewModel.productCategoriesCollection.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.categoryInputTextField.text = self.viewModel.productCategoriesCollection[row].categoryName
+        self.selectedCategoryIdentifier = String(self.viewModel.productCategoriesCollection[row].categoryIdentifier)
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.viewModel.productCategoriesCollection[row].categoryName
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
     }
 }
