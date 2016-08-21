@@ -43,6 +43,11 @@ class ProductApi {
                 if let data = data as? [String: AnyObject], collection = data["product_collection"] as? [[String: AnyObject]] {
                         do {
                             if let productsCollection = try MTLJSONAdapter.modelsOfClass(Product.self, fromJSONArray: collection) as? [Product] {
+                                
+                                for product in productsCollection {
+                                    product.categoryIdentifier = categoryIdentifier
+                                }
+                                
                                 let result = ProductDatabaseStorer().objectsStoredToDatabaseWithProducts(productsCollection)
                                 completion(result)
                             }

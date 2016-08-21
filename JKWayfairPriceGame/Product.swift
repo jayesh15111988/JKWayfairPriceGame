@@ -12,6 +12,7 @@ import MTLManagedObjectAdapter
 import Mantle
 
 class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
+    var categoryIdentifier: String = ""
     var averageOverallRating: NSNumber = 0
     var imageURL: NSURL? = nil
     var listPrice: NSNumber = 0
@@ -59,7 +60,8 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
     }
     
     static func managedObjectKeysByPropertyKey() -> [NSObject : AnyObject]! {
-        return ["averageOverallRating": "averageOverallRating",
+        return ["categoryIdentifier": "categoryIdentifier",
+                "averageOverallRating": "averageOverallRating",
                 "imageURL": "imageURL",
                 "listPrice": "listPrice",
                 "listPriceRounded": "listPriceRounded",

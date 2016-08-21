@@ -52,9 +52,9 @@ class FinalScoreIndicatorView: UIView {
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[gameStatsLabel]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[goBackButton]-[newGameButton(==goBackButton)]-[viewStatisticsButton(==newGameButton)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[gameStatsLabel]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[goBackButton(44)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[newGameButton(44)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[viewStatisticsButton(44)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[goBackButton(44)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[newGameButton(44)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[viewStatisticsButton(44)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
         RACObserve(self.viewModel, keyPath: "finalScoreScreenOption").skip(1).subscribeNext {
             (selectedOption) in             

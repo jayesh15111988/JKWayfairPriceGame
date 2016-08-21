@@ -181,7 +181,6 @@
 				381F11CF1D6407E3008C3A4E /* Product.swift */,
 				38592DB91D67F5620051E62F /* QuizQuestion.swift */,
 				38592DBD1D68073B0051E62F /* QuizOption.swift */,
-				38592DC61D6896620051E62F /* ProductWebViewerViewModel.swift */,
 				38592DCC1D6935C20051E62F /* QuizAnswer.swift */,
 			);
 			name = Models;
@@ -193,6 +192,7 @@
 				381F11CB1D64053A008C3A4E /* GameHomePageViewModel.swift */,
 				38592DB51D67F26C0051E62F /* GameViewModel.swift */,
 				38592DCA1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift */,
+				38592DC61D6896620051E62F /* ProductWebViewerViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
