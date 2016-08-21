@@ -21,7 +21,7 @@ func randomChoicesWith(originalNumber: Int, numberOfRandomOptions: Int, randomOf
     
     while randomChoices.count < numberOfRandomOptions {
         
-        let lowerOffset = originalNumber - randomOffset <= 0 ? 1 : originalNumber - randomOffset
+        let lowerOffset = ((originalNumber - randomOffset) <= 0) ? 1 : originalNumber - randomOffset
         
         let randomChoice = Int(positiveRandomNumberInRange(UInt32(lowerOffset), upperValue: UInt32(originalNumber + randomOffset)))
         

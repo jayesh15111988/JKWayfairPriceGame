@@ -23,7 +23,9 @@ class GameHomePageViewModel: NSObject {
     var startGameActionCommand: RACCommand?
     var startGameWithDefaultActionCommand: RACCommand?
     var resetCategoriesActionCommand: RACCommand?
+    var gameInstructionsActionCommand: RACCommand?
     dynamic var gameViewModel: GameViewModel?
+    var gameInstructionsViewModel: GameInstructionsViewModel
 
     override init() {
         self.productsCollection = []
@@ -31,6 +33,7 @@ class GameHomePageViewModel: NSObject {
         self.errorMessage = ""
         self.productsLoading = false
         self.categoryIdentifier = defaultCategoryIdentifier
+        self.gameInstructionsViewModel = GameInstructionsViewModel()
         
         super.init()
         
@@ -50,7 +53,7 @@ class GameHomePageViewModel: NSObject {
             self.productsCollection = []
             self.loadBaseCategories()
             return RACSignal.empty()
-            })
+        })
     }
     
     func loadBaseCategories() {

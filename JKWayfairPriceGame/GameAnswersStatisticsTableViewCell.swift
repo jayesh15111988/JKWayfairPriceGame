@@ -43,7 +43,7 @@ class GameAnswersStatisticsTableViewCell: UITableViewCell {
     }
     
     func setupWithAnswer(answer: QuizAnswer) {
-        answersStatsLabel.text = "\(answer.title)\n\nGiven Answer: \(answer.selectedOption)\n\nExpected Answer: \(answer.correctOption)"
+        answersStatsLabel.text = "\(answer.title)\n\nGiven Answer: \(answer.selectedOption)\n\nCorrect Answer: \(answer.correctOption)"
         answersStatsLabel.textColor = StatsLabel(rawValue: Int(answer.isCorrect))?.labelColor()
     }
 }

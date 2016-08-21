@@ -103,7 +103,8 @@ class GameViewModel: NSObject {
     func generateRandomProductQuiz() {
         self.selectedProduct = products[positiveRandomNumberInRange(0, upperValue: UInt32(products.count - 1))]
         if let product = self.selectedProduct {
-            let randomOptions = randomChoicesWith(product.listPriceRounded.integerValue, numberOfRandomOptions: 4, randomOffset: priceOptionsOffsetForScore(self.totalScore))
+            let originalProductPrice = product.listPriceRounded.integerValue
+            let randomOptions = randomChoicesWith(originalProductPrice, numberOfRandomOptions: 4, randomOffset: originalProductPrice - priceOptionsOffsetForScore(self.totalScore))
             self.questionObject = QuizQuestion(options: randomOptions)
         }
     }

@@ -34,7 +34,7 @@ class GameAnswersStatisticsViewController: UIViewController, UITableViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Answers Statistics"
+        self.title = "Statistics"
         self.automaticallyAdjustsScrollViewInsets = false
         self.view.backgroundColor = .whiteColor()
         self.view.addSubview(self.tableView)

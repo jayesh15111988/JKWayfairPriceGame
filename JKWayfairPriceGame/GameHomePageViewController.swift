@@ -15,6 +15,7 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     let viewModel: GameHomePageViewModel
     let categoryInputTextField: UITextField
     var selectedCategoryIdentifier: String
+    let instructionsViewController: GameInstructionsViewController
     
     init(viewModel: GameHomePageViewModel) {
         self.viewModel = viewModel
@@ -25,7 +26,9 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.categoryInputTextField.textAlignment = .Center
         self.categoryInputTextField.font = UIFont.systemFontOfSize(16)
         self.categoryInputTextField.placeholder = "Please Choose Product Category"
+        self.instructionsViewController = GameInstructionsViewController(viewModel: GameInstructionsViewModel())
         super.init(nibName: nil, bundle: nil)
+        self.instructionsViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(dismiss))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,6 +39,13 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         super.viewDidLoad()
         self.title = "Price Guessing Game"
         self.view.backgroundColor = UIColor.whiteColor()
+        
+        let instructionsButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
+        instructionsButton.setImage(UIImage(named: "instructions"), forState: .Normal)
+        instructionsButton.bk_whenTapped { [unowned self] in
+            self.showInstructionsView()
+        }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: instructionsButton)
         
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,13 +61,11 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         activityIndicatorView.hidesWhenStopped = true
         activityIndicatorView.color = .redColor();
         
-        let gameInstructionsTextView = UITextView()
-        gameInstructionsTextView.translatesAutoresizingMaskIntoConstraints = false
-        gameInstructionsTextView.selectable = false
-        gameInstructionsTextView.editable = false
-        gameInstructionsTextView.font = UIFont.systemFontOfSize(16)
-        gameInstructionsTextView.text = "adasd\nadasda\nasdasd\nasdasdas\nasdasdas\nasdasdasdas\nasdasd\n"
-        contentView.addSubview(gameInstructionsTextView)
+        let basicInstructionsLabel = UILabel()
+        basicInstructionsLabel.translatesAutoresizingMaskIntoConstraints = false
+        basicInstructionsLabel.numberOfLines = 0
+        basicInstructionsLabel.text = "Please select the category of your choice from the picker below and press Begin Game button to start the quiz"
+        contentView.addSubview(basicInstructionsLabel)
         
         let pickerView = UIPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +74,7 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         let toolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.width, 44))
         toolbar.items = [UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancelSelection)), UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(finishSelection))]
-            
+    
         categoryInputTextField.inputView = pickerView
         categoryInputTextField.inputAccessoryView = toolbar
         contentView.addSubview(categoryInputTextField)
@@ -97,7 +105,8 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.view.addConstraint(NSLayoutConstraint(item: activityIndicatorView, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1.0, constant: 0))
         
         let topLayoutGuide = self.topLayoutGuide
-        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "beginGameButton": beginGameButton, "gameInstructionsTextView": gameInstructionsTextView, "contentView": contentView, "scrollView": scrollView, "categoryInputTextField": categoryInputTextField, "beginGameWithDefaultsButton": beginGameWithDefaultsButton, "resetCategoriesButton": resetCategoriesButton]
+        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "beginGameButton": beginGameButton, "contentView": contentView, "scrollView": scrollView, "basicInstructionsLabel": basicInstructionsLabel, "categoryInputTextField": categoryInputTextField, "beginGameWithDefaultsButton": beginGameWithDefaultsButton, "resetCategoriesButton": resetCategoriesButton]
+        let metrics = ["inputFieldHeight": 34, "bottomViewPadding": 40, "defaultViewPadding": 20]
         
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: 0))
@@ -108,13 +117,13 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[basicInstructionsLabel]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[categoryInputTextField]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[beginGameButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[beginGameWithDefaultsButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[resetCategoriesButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[gameInstructionsTextView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[gameInstructionsTextView(150)]-[categoryInputTextField(34)]-[beginGameButton(44)]-[beginGameWithDefaultsButton(44)]-[resetCategoriesButton(44)]-40-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-defaultViewPadding-[basicInstructionsLabel(>=0)]-defaultViewPadding-[categoryInputTextField(inputFieldHeight)]-[beginGameButton(inputFieldHeight)]-[beginGameWithDefaultsButton(inputFieldHeight)]-[resetCategoriesButton(inputFieldHeight)]-bottomViewPadding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
         
         RACObserve(viewModel, keyPath: "productsLoading").subscribeNext { (loading) in
             if let loading = loading as? Bool {
@@ -159,6 +168,15 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
                 self.categoryInputTextField.becomeFirstResponder()
             }
         }
+        
+        self.rac_signalForSelector(#selector(viewDidAppear)).take(1).subscribeNext { [unowned self]
+            (_) in
+            self.showInstructionsView()
+        }
+    }
+    
+    func showInstructionsView() {
+        self.presentViewController(UINavigationController(rootViewController: instructionsViewController), animated: true, completion: nil)
     }
     
     func finishSelection() {
@@ -168,6 +186,10 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func cancelSelection() {
         self.categoryInputTextField.resignFirstResponder()
+    }
+    
+    func dismiss() {
+        self.instructionsViewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //MARK: UIPickerView datasource and delegate methods
