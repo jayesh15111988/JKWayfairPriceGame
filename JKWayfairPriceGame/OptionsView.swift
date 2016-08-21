@@ -30,7 +30,7 @@ class OptionsView: UIView {
             button.titleLabel?.textAlignment = .Center
             button.layer.borderColor = UIColor.lightGrayColor().CGColor
             button.bk_whenTapped({
-              self.view(false)
+              self.viewEnableInteraction(false)
               self.selectionClosure?(index)
             })
             self.addSubview(button)
@@ -46,7 +46,7 @@ class OptionsView: UIView {
     }
     
     func updateWithOptions(options: [QuizOption]) {
-        view(true)
+        viewEnableInteraction(true)
         var index = 0
         for option in options {
             buttons[index].setTitle(option.name, forState: .Normal)
@@ -54,13 +54,13 @@ class OptionsView: UIView {
         }
     }
     
-    func view(enableInteraction:Bool) {
-        if enableInteraction == true {
+    func viewEnableInteraction(enable:Bool) {
+        if enable == true {
             self.alpha = 1.0
         } else {
             self.alpha = 0.5
         }
-        self.userInteractionEnabled = enableInteraction
+        self.userInteractionEnabled = enable
     }
     
     required init?(coder aDecoder: NSCoder) {

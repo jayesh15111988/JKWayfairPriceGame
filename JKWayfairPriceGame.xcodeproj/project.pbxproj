@@ -29,6 +29,8 @@
 		38592DC31D6894AB0051E62F /* placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DC21D6894AB0051E62F /* placeholder_image.png */; };
 		38592DC51D68964C0051E62F /* ProductWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DC41D68964C0051E62F /* ProductWebViewController.swift */; };
 		38592DC71D6896620051E62F /* ProductWebViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DC61D6896620051E62F /* ProductWebViewerViewModel.swift */; };
+		38592DC91D690B910051E62F /* FinalScoreIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DC81D690B910051E62F /* FinalScoreIndicatorView.swift */; };
+		38592DCB1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DCA1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift */; };
 		388B24EB1D66A69F00638688 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EA1D66A69F00638688 /* RACObserve.swift */; };
 		388B24ED1D66A6BF00638688 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EC1D66A6BF00638688 /* RAC.swift */; };
 		388B24EF1D66A6FB00638688 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */; };
@@ -74,6 +76,8 @@
 		38592DC21D6894AB0051E62F /* placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_image.png; sourceTree = "<group>"; };
 		38592DC41D68964C0051E62F /* ProductWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductWebViewController.swift; sourceTree = "<group>"; };
 		38592DC61D6896620051E62F /* ProductWebViewerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductWebViewerViewModel.swift; sourceTree = "<group>"; };
+		38592DC81D690B910051E62F /* FinalScoreIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalScoreIndicatorView.swift; sourceTree = "<group>"; };
+		38592DCA1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalScoreIndicatorViewModel.swift; sourceTree = "<group>"; };
 		388B24EA1D66A69F00638688 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACObserve.swift; sourceTree = "<group>"; };
 		388B24EC1D66A6BF00638688 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
 		388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACSignal+Extensions.swift"; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 			children = (
 				381F11CB1D64053A008C3A4E /* GameHomePageViewModel.swift */,
 				38592DB51D67F26C0051E62F /* GameViewModel.swift */,
+				38592DCA1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				38592DB71D67F3A10051E62F /* GameViewController.swift */,
 				38592DBF1D6823510051E62F /* OptionsView.swift */,
 				38592DC41D68964C0051E62F /* ProductWebViewController.swift */,
+				38592DC81D690B910051E62F /* FinalScoreIndicatorView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -423,6 +429,8 @@
 				38592DBE1D68073B0051E62F /* QuizOption.swift in Sources */,
 				38592DBC1D67FC080051E62F /* Collections.swift in Sources */,
 				381F11C81D64021C008C3A4E /* ProductApi.swift in Sources */,
+				38592DC91D690B910051E62F /* FinalScoreIndicatorView.swift in Sources */,
+				38592DCB1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift in Sources */,
 				388B24EB1D66A69F00638688 /* RACObserve.swift in Sources */,
 				388B24F21D66BD6700638688 /* Random.swift in Sources */,
 				38592DC01D6823510051E62F /* OptionsView.swift in Sources */,

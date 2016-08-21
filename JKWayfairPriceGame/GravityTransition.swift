@@ -9,33 +9,38 @@
 import UIKit
 import Foundation
 
-extension UIViewController {
+extension UIView {
     
     func makeGravityTransition(change: () -> Void) {
-        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, true, 0)
-        self.view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0)
+        self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let currentViewScreenshot = UIGraphicsGetImageFromCurrentImageContext()
         let frontConverImageView = UIImageView(image: currentViewScreenshot)
-        frontConverImageView.frame = self.view.bounds
-        self.view.addSubview(frontConverImageView)
-        
+        frontConverImageView.frame = self.bounds
+        self.addSubview(frontConverImageView)
         change()
-        
-        let dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
-        let gravityBehaviour = UIGravityBehavior(items: [frontConverImageView])
-        let dynamicItemBehaviour = UIDynamicItemBehavior(items: [frontConverImageView])
+        frontConverImageView.addGravity()
+    }
+    
+    func addGravity() {
+        if let superView = self.superview {
+        let dynamicAnimator = UIDynamicAnimator(referenceView: superview!)
+        let gravityBehaviour = UIGravityBehavior(items: [self])
+        let dynamicItemBehaviour = UIDynamicItemBehavior(items: [self])
         dynamicItemBehaviour.allowsRotation = true
         gravityBehaviour.gravityDirection = CGVectorMake (-2, 5)
         gravityBehaviour.action = {
-            if (frontConverImageView.frame.intersects(self.view.frame) == false) {
-                frontConverImageView.removeFromSuperview()
-                dynamicAnimator.removeAllBehaviors()
+            if (self.frame.intersects(superView.frame) == false) {
+                    self.removeFromSuperview()
+                    dynamicAnimator.removeAllBehaviors()
             }
         }
         
         dynamicAnimator.removeAllBehaviors()
-        dynamicItemBehaviour.addAngularVelocity(CGFloat(5), forItem: frontConverImageView)
+        dynamicItemBehaviour.addAngularVelocity(CGFloat(5), forItem: self)
         dynamicAnimator.addBehavior(dynamicItemBehaviour)
         dynamicAnimator.addBehavior(gravityBehaviour)
+        }
     }
+    
 }
