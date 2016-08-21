@@ -25,6 +25,7 @@ class GameHomePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Price Guessing Game"
         self.view.backgroundColor = UIColor.whiteColor()
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false

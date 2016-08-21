@@ -46,7 +46,6 @@ class GameViewModel: NSObject {
         })
         
         self.finisQuizActionCommand = RACCommand(signalBlock: { (signal) -> RACSignal! in
-            self.resetParameters()
             self.finalQuizScoreViewModel = FinalScoreIndicatorViewModel(gameViewModel: self)
             self.enableViewInteraction = false
             RACObserve(self.finalQuizScoreViewModel, keyPath: "finalScoreScreenOption").skip(1).subscribeNext {
@@ -88,12 +87,17 @@ class GameViewModel: NSObject {
             case .GoBack:
                 self.goBackToHomePage = true
             case .NewGame:
-                self.enableViewInteraction = true
-                self.generateRandomProductQuiz()
+                self.resetViewWithNewQuiz()
             case .ViewStatistics:
                 self.viewStatistics = true
-                self.generateRandomProductQuiz()
+                self.resetViewWithNewQuiz()
         }
+    }
+    
+    func resetViewWithNewQuiz() {
+        self.enableViewInteraction = true
+        self.resetParameters()
+        self.generateRandomProductQuiz()
     }
     
     func generateRandomProductQuiz() {

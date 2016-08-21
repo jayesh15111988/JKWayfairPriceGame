@@ -40,7 +40,7 @@ class QuizCustomOptions {
         case 0.4..<0.7:
             color = UIColor(red: 0.9, green: 0.49, blue: 0.13, alpha: 1.0)
         case 0.7..<1.0:
-            color = UIColor(red: 0.15, green: 0.68, blue: 0.37, alpha: 1.0)
+            color = UIColor(red: 0.55, green: 0.27, blue: 0.67, alpha: 1.0)
         default:
             color = UIColor(red: 0.16, green: 0.5, blue: 0.72, alpha: 1.0)
         }

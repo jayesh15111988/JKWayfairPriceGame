@@ -133,7 +133,8 @@ class GameViewController: UIViewController {
         
         RACObserve(self.gameViewModel, keyPath: "viewStatistics").ignore(false).subscribeNext {
             (viewStatistics) in
-            // Present User with Quiz stats
+            let gameAnswersStatisticsViewController = GameAnswersStatisticsViewController(answers: self.gameViewModel.answersCollection)
+            self.navigationController?.pushViewController(gameAnswersStatisticsViewController, animated: true)            
         }
         
         RACObserve(self.gameViewModel, keyPath: "enableViewInteraction").skip(1).subscribeNext { (enableViewInteractionFlag) in

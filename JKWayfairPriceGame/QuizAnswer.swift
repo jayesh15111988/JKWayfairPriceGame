@@ -13,18 +13,22 @@ class QuizAnswer {
     let title: String
     let options: [QuizOption]
     let selectedOption: String
-    var correctOption: String?
+    var correctOption: String
+    var isCorrect: Bool
     
     init(title: String, options: [QuizOption], selectedOption: Int) {
         self.title = title
         self.options = options
-        self.selectedOption = selectedOption == -1 ? "N/A" : String(selectedOption)
+        self.correctOption = ""
+        
+        self.selectedOption = selectedOption == -1 ? "Skipped" : options[selectedOption].name
         
         for (index, option) in options.enumerate() {
             if option.isCorrectOption == true {
-                self.correctOption = String(index)
+                self.correctOption = options[index].name
                 break
             }
         }
+        self.isCorrect = self.correctOption == self.selectedOption
     }
 }
