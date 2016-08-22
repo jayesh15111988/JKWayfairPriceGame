@@ -12,6 +12,8 @@ import ReactiveCocoa
 import Mantle
 import MTLManagedObjectAdapter
 
+private let DefaultCategoriesStoredIndicator: String = "defaultCategoriesStoredIndicator"
+
 class GameHomePageViewModel: NSObject {
     
     let defaultCategoryIdentifier = "419247"
@@ -29,6 +31,7 @@ class GameHomePageViewModel: NSObject {
     var gameInstructionsViewModel: GameInstructionsViewModel
 
     override init() {
+        
         self.productsCollection = []
         self.productCategoriesCollection = []
         self.errorMessage = ""
@@ -40,7 +43,10 @@ class GameHomePageViewModel: NSObject {
         super.init()
         
         self.loadBaseCategories()
-        self.loadProductsFromAPIwithCategoryIdentifier(self.defaultCategoryIdentifier, caching: true)
+        
+        if NSUserDefaults.standardUserDefaults().boolForKey(DefaultCategoriesStoredIndicator) == false {
+            self.loadProductsFromAPIwithCategoryIdentifier(self.defaultCategoryIdentifier, caching: true)
+        }
         startGameActionCommand = RACCommand(signalBlock: { [unowned self] (_) -> RACSignal! in
             self.searchWithSelectedCategoryIdentifier(self.categoryIdentifier)
             return RACSignal.empty()
@@ -100,8 +106,10 @@ class GameHomePageViewModel: NSObject {
                         productsCollection = models
                         self.categoryIdentifier = categoryIdentifier
                         self.gameViewModel = GameViewModel(products: self.productsCollection)
-                        defaultGameModeStatus = categoryIdentifier == defaultCategoryIdentifier
+                    } else {
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: DefaultCategoriesStoredIndicator)
                     }
+                    defaultGameModeStatus = categoryIdentifier == defaultCategoryIdentifier
                 } else if let models = models as? [ProductCategory] {
                     productCategoriesCollection = models                    
                 }

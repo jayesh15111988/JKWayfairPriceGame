@@ -10,6 +10,8 @@ import BlocksKit
 import Foundation
 import UIKit
 
+private let GameInstructionsViewDisplayedIndicator: String = "gameInstructionsViewDisplayedIndicator"
+
 class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let viewModel: GameHomePageViewModel
@@ -109,7 +111,16 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.view.addConstraint(NSLayoutConstraint(item: activityIndicatorView, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1.0, constant: 0))
         
         let topLayoutGuide = self.topLayoutGuide
-        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "beginGameButton": beginGameButton, "contentView": contentView, "scrollView": scrollView, "basicInstructionsLabel": basicInstructionsLabel, "categoryInputTextField": categoryInputTextField, "beginGameWithDefaultsButton": beginGameWithDefaultsButton, "resetCategoriesButton": resetCategoriesButton]
+        
+        let spacer1 = UIView()
+        spacer1.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(spacer1)
+        
+        let spacer2 = UIView()
+        spacer2.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(spacer2)
+        
+        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "beginGameButton": beginGameButton, "contentView": contentView, "scrollView": scrollView, "basicInstructionsLabel": basicInstructionsLabel, "categoryInputTextField": categoryInputTextField, "beginGameWithDefaultsButton": beginGameWithDefaultsButton, "resetCategoriesButton": resetCategoriesButton, "spacer1": spacer1, "spacer2": spacer2]
         let metrics = ["inputFieldHeight": 34, "bottomViewPadding": 40, "defaultViewPadding": 20]
         
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0))
@@ -121,8 +132,8 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[basicInstructionsLabel]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[categoryInputTextField]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[basicInstructionsLabel(<=400)]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[categoryInputTextField(<=400)]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[beginGameButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[beginGameWithDefaultsButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[resetCategoriesButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
@@ -176,7 +187,10 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         self.rac_signalForSelector(#selector(viewDidAppear)).take(1).subscribeNext { [unowned self]
             (_) in
-            self.showInstructionsView()
+            if NSUserDefaults.standardUserDefaults().boolForKey(GameInstructionsViewDisplayedIndicator) == false {
+                self.showInstructionsView()
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: GameInstructionsViewDisplayedIndicator)
+            }
         }
     }
     

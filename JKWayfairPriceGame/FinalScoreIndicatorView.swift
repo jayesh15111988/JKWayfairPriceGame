@@ -37,6 +37,9 @@ class FinalScoreIndicatorView: UIView {
         viewStatisticsButton.setTitleColor(.blackColor(), forState: .Normal)
         viewStatisticsButton.rac_command = self.viewModel.viewStatisticsButtonActionCommand
         viewStatisticsButton.setTitle("Statistics", forState: .Normal)
+        let answeredAtleastOneQuestion = self.viewModel.gameViewModel.answersCollection.count > 0
+        viewStatisticsButton.userInteractionEnabled = answeredAtleastOneQuestion
+        viewStatisticsButton.alpha = answeredAtleastOneQuestion == true ? 1.0 : 0.5
         self.addSubview(viewStatisticsButton)
         
         let gameStatsLabel = UILabel()
