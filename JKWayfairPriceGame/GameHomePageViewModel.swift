@@ -19,6 +19,7 @@ class GameHomePageViewModel: NSObject {
     dynamic var productCategoriesCollection: [ProductCategory]
     dynamic var errorMessage: String
     dynamic var productsLoading: Bool
+    dynamic var defaultGameModeStatus: Bool
     var categoryIdentifier: String
     var startGameActionCommand: RACCommand?
     var startGameWithDefaultActionCommand: RACCommand?
@@ -34,6 +35,7 @@ class GameHomePageViewModel: NSObject {
         self.productsLoading = false
         self.categoryIdentifier = defaultCategoryIdentifier
         self.gameInstructionsViewModel = GameInstructionsViewModel()
+        self.defaultGameModeStatus = true
         
         super.init()
         
@@ -69,11 +71,10 @@ class GameHomePageViewModel: NSObject {
     }
     
     func searchWithSelectedCategoryIdentifier(categoryIdentifier: String) {
-        self.categoryIdentifier = categoryIdentifier
         let storedProductsResult = ProductDatabaseStorer().productsFromDatabaseWith(categoryIdentifier, entityType: ModelType.Product)
         switch storedProductsResult {
             case .SuccessMantleModels(_):
-                self.validateProducts(storedProductsResult)
+                self.validateProducts(storedProductsResult, categoryIdentifier: categoryIdentifier)
             case let Result.Failure(error):
                 print("Failed to retrieve data from database with error \(error.localizedDescription)")
             default:
@@ -84,11 +85,11 @@ class GameHomePageViewModel: NSObject {
     func loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier: String) {
         self.productsLoading = true
         ProductApi.sharedInstance.productsWith(categoryIdentifier, format: .json, completion: { result in
-            self.validateProducts(result)
+            self.validateProducts(result, categoryIdentifier: categoryIdentifier)
         })
     }
     
-    func validateProducts(result: Result) {
+    func validateProducts(result: Result, categoryIdentifier: String) {
         self.productsLoading = false
         switch result {
         case let .SuccessMantleModels(models):
@@ -96,6 +97,7 @@ class GameHomePageViewModel: NSObject {
                 if let models = models as? [Product] {
                     productsCollection = models
                     self.gameViewModel = GameViewModel(products: self.productsCollection)
+                    defaultGameModeStatus = categoryIdentifier == defaultCategoryIdentifier
                 } else if let models = models as? [ProductCategory] {
                     productCategoriesCollection = models                    
                 }

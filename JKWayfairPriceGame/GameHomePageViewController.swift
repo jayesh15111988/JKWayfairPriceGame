@@ -28,7 +28,7 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.categoryInputTextField.placeholder = "Please Choose Product Category"
         self.instructionsViewController = GameInstructionsViewController(viewModel: GameInstructionsViewModel())
         super.init(nibName: nil, bundle: nil)
-        self.instructionsViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(dismiss))
+        self.instructionsViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(dismiss))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -88,7 +88,7 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         let beginGameWithDefaultsButton = UIButton(type: .System)
         beginGameWithDefaultsButton.translatesAutoresizingMaskIntoConstraints = false
-        beginGameWithDefaultsButton.setTitle("Begin Game with defaults", forState: .Normal)
+        beginGameWithDefaultsButton.setTitle("Begin Game Default Category", forState: .Normal)
         beginGameWithDefaultsButton.setTitleColor(.blackColor(), forState: .Normal)
         beginGameWithDefaultsButton.rac_command = self.viewModel.startGameWithDefaultActionCommand
         contentView.addSubview(beginGameWithDefaultsButton)
@@ -135,10 +135,10 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
             }
         }
         
-        RACObserve(viewModel, keyPath: "productsCollection").ignore(nil).subscribeNext { (products) in
-            if let products = products as? [Product] {
-                beginGameButton.userInteractionEnabled = products.count > 0
-                beginGameButton.alpha = products.count > 0 ? 1.0 : 0.5
+        RACObserve(viewModel, keyPath: "defaultGameModeStatus").ignore(nil).subscribeNext { (defaultGameModeStatus) in
+            if let defaultGameModeStatus = defaultGameModeStatus as? Bool {
+                beginGameButton.userInteractionEnabled = !defaultGameModeStatus
+                beginGameButton.alpha = defaultGameModeStatus == true ? 0.5 : 1.0
             }
         }
         
