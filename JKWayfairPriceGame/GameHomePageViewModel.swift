@@ -33,9 +33,9 @@ class GameHomePageViewModel: NSObject {
         self.productCategoriesCollection = []
         self.errorMessage = ""
         self.productsLoading = false
-        self.categoryIdentifier = defaultCategoryIdentifier
         self.gameInstructionsViewModel = GameInstructionsViewModel()
         self.defaultGameModeStatus = true
+        self.categoryIdentifier = ""
         
         super.init()
         
@@ -53,6 +53,7 @@ class GameHomePageViewModel: NSObject {
         
         resetCategoriesActionCommand = RACCommand(signalBlock: { [unowned self] (_) -> RACSignal! in
             self.productsCollection = []
+            self.defaultGameModeStatus = true
             self.loadBaseCategories()
             return RACSignal.empty()
         })
@@ -97,12 +98,13 @@ class GameHomePageViewModel: NSObject {
                 if let models = models as? [Product] {
                     productsCollection = models
                     self.gameViewModel = GameViewModel(products: self.productsCollection)
+                    self.categoryIdentifier = categoryIdentifier
                     defaultGameModeStatus = categoryIdentifier == defaultCategoryIdentifier
                 } else if let models = models as? [ProductCategory] {
                     productCategoriesCollection = models                    
                 }
             } else {
-                self.loadProductsFromAPIwithCategoryIdentifier(self.categoryIdentifier)
+                self.loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier)
             }
         case let .Failure(error):
             errorMessage = error.localizedDescription
