@@ -11,9 +11,15 @@ import Foundation
 import MTLManagedObjectAdapter
 import Mantle
 
+enum Availability: String {
+    case Available
+    case Unavailable
+}
+
 class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
     var categoryIdentifier: String = ""
     var averageOverallRating: NSNumber = 0
+    var availability: String = Availability.Unavailable.rawValue
     var imageURL: NSURL? = nil
     var listPrice: NSNumber = 0
     var listPriceRounded: NSNumber = 0
@@ -26,6 +32,7 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
     
     static func JSONKeyPathsByPropertyKey() -> [NSObject : AnyObject]! {
         return ["averageOverallRating": "average_overall_rating",
+        "availability": "has_stock",
         "imageURL": "image_url",
         "listPrice": "list_price",
         "listPriceRounded": "list_price",
@@ -45,8 +52,12 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
         return NSValueTransformer(forName: MTLURLValueTransformerName)!
     }
     
+    static func availabilityJSONTransformer() -> NSValueTransformer {
+        return NSValueTransformer.mtl_valueMappingTransformerWithDictionary([true: "Available", false: "Unavailable"])
+    }
+    
     static func listPriceRoundedJSONTransformer() -> NSValueTransformer {
-        return MTLValueTransformer.transformerWithBlock({ (originalListPrice) -> AnyObject! in
+        return MTLValueTransformer(usingForwardBlock: { (originalListPrice, success, error) -> AnyObject! in
             if let originalListPrice = originalListPrice as? NSNumber {
                 return round(originalListPrice.doubleValue)
             }
@@ -61,6 +72,7 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
     
     static func managedObjectKeysByPropertyKey() -> [NSObject : AnyObject]! {
         return ["categoryIdentifier": "categoryIdentifier",
+                "availability": "availability",
                 "averageOverallRating": "averageOverallRating",
                 "imageURL": "imageURL",
                 "listPrice": "listPrice",

@@ -16,6 +16,8 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     let categoryInputTextField: UITextField
     var selectedCategoryIdentifier: String
     let instructionsViewController: GameInstructionsViewController
+    let beginGameButton: UIButton
+    let beginGameWithDefaultsButton: UIButton
     
     init(viewModel: GameHomePageViewModel) {
         self.viewModel = viewModel
@@ -27,6 +29,19 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.categoryInputTextField.font = UIFont.systemFontOfSize(16)
         self.categoryInputTextField.placeholder = "Please Choose Product Category"
         self.instructionsViewController = GameInstructionsViewController(viewModel: GameInstructionsViewModel())
+        
+        beginGameButton = UIButton(type: .System)
+        beginGameButton.translatesAutoresizingMaskIntoConstraints = false
+        beginGameButton.setTitle("Begin Game", forState: .Normal)
+        beginGameButton.setTitleColor(.blackColor(), forState: .Normal)
+        beginGameButton.rac_command = self.viewModel.startGameActionCommand
+        
+        beginGameWithDefaultsButton = UIButton(type: .System)
+        beginGameWithDefaultsButton.translatesAutoresizingMaskIntoConstraints = false
+        beginGameWithDefaultsButton.setTitle("Begin Game Default Category", forState: .Normal)
+        beginGameWithDefaultsButton.setTitleColor(.blackColor(), forState: .Normal)
+        beginGameWithDefaultsButton.rac_command = self.viewModel.startGameWithDefaultActionCommand
+        
         super.init(nibName: nil, bundle: nil)
         self.instructionsViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(dismiss))
     }
@@ -77,20 +92,9 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     
         categoryInputTextField.inputView = pickerView
         categoryInputTextField.inputAccessoryView = toolbar
+        
         contentView.addSubview(categoryInputTextField)
-        
-        let beginGameButton = UIButton(type: .System)
-        beginGameButton.translatesAutoresizingMaskIntoConstraints = false
-        beginGameButton.setTitle("Begin Game", forState: .Normal)
-        beginGameButton.setTitleColor(.blackColor(), forState: .Normal)
-        beginGameButton.rac_command = self.viewModel.startGameActionCommand
         contentView.addSubview(beginGameButton)
-        
-        let beginGameWithDefaultsButton = UIButton(type: .System)
-        beginGameWithDefaultsButton.translatesAutoresizingMaskIntoConstraints = false
-        beginGameWithDefaultsButton.setTitle("Begin Game Default Category", forState: .Normal)
-        beginGameWithDefaultsButton.setTitleColor(.blackColor(), forState: .Normal)
-        beginGameWithDefaultsButton.rac_command = self.viewModel.startGameWithDefaultActionCommand
         contentView.addSubview(beginGameWithDefaultsButton)
         
         let resetCategoriesButton = UIButton(type: .System)
@@ -132,13 +136,14 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
                 } else {
                     activityIndicatorView.stopAnimating()
                 }
+                self.buttonsUserInteractionEnable(!loading)
             }
         }
         
         RACObserve(viewModel, keyPath: "defaultGameModeStatus").ignore(nil).subscribeNext { (defaultGameModeStatus) in
             if let defaultGameModeStatus = defaultGameModeStatus as? Bool {
-                beginGameButton.userInteractionEnabled = !defaultGameModeStatus
-                beginGameButton.alpha = defaultGameModeStatus == true ? 0.5 : 1.0
+                self.beginGameButton.userInteractionEnabled = !defaultGameModeStatus
+                self.beginGameButton.alpha = defaultGameModeStatus == true ? 0.5 : 1.0
             }
         }
         
@@ -190,6 +195,13 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func dismiss() {
         self.instructionsViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func buttonsUserInteractionEnable(enable: Bool) {
+        self.beginGameButton.userInteractionEnabled = enable
+        self.beginGameWithDefaultsButton.userInteractionEnabled = enable
+        self.beginGameButton.alpha = enable == true ? 1.0 : 0.5
+        self.beginGameWithDefaultsButton.alpha = enable == true ? 1.0 : 0.5
     }
     
     //MARK: UIPickerView datasource and delegate methods

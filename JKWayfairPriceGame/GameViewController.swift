@@ -17,8 +17,10 @@ class GameViewController: UIViewController {
     let viewProductOnlineButton: UIButton
     let productImageView: UIImageView
     let productNameLabel: UILabel
+    let quizSequenceLabel: UILabel
     let optionsView: OptionsView
     let quizParentView: UIView
+    let availabilityIndicatorImage: UIImageView
     
     var dynamicAnimator: UIDynamicAnimator?
     var snapBehavior: UISnapBehavior?
@@ -50,11 +52,23 @@ class GameViewController: UIViewController {
         self.productImageView.translatesAutoresizingMaskIntoConstraints = false
         self.productImageView.contentMode = .ScaleAspectFit
         self.productImageView.clipsToBounds = true
+        self.productImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.productImageView.layer.borderWidth = 1.0
+        
+        self.availabilityIndicatorImage = UIImageView()
+        self.availabilityIndicatorImage.translatesAutoresizingMaskIntoConstraints = false
+        self.availabilityIndicatorImage.contentMode = .ScaleAspectFit
+        self.availabilityIndicatorImage.clipsToBounds = true
         
         self.productNameLabel = UILabel()
         self.productNameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.productNameLabel.numberOfLines = 0
         self.productNameLabel.textAlignment = .Center
+        
+        self.quizSequenceLabel = UILabel()
+        self.quizSequenceLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.quizSequenceLabel.numberOfLines = 0
+        self.quizSequenceLabel.textAlignment = .Center
         
         self.optionsView = OptionsView()
         self.optionsView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,9 +98,12 @@ class GameViewController: UIViewController {
         quizParentView.addSubview(self.productImageView)
         quizParentView.addSubview(self.optionsView)
         quizParentView.addSubview(self.productNameLabel)
+        quizParentView.addSubview(self.availabilityIndicatorImage)
+        quizParentView.addSubview(self.quizSequenceLabel)
         
         let topLayoutGuide = self.topLayoutGuide
-        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "scrollView": scrollView, "quizParentView": quizParentView, "productNameLabel": productNameLabel, "productImageView": productImageView, "viewProductOnlineButton": viewProductOnlineButton, "optionsView": optionsView, "skipQuestionButton": skipQuestionButton, "finishQuizButton": finishQuizButton]
+        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "scrollView": scrollView, "quizParentView": quizParentView, "productNameLabel": productNameLabel, "quizSequenceLabel": quizSequenceLabel, "productImageView": productImageView, "availabilityIndicatorImage": availabilityIndicatorImage, "viewProductOnlineButton": viewProductOnlineButton, "optionsView": optionsView, "skipQuestionButton": skipQuestionButton, "finishQuizButton": finishQuizButton]
+        let metrics = ["horizontalImagePadding": 20, "availabilityIndicatorIconDimension": 24]
         
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Left, relatedBy: .Equal, toItem: quizParentView, attribute: .Left, multiplier: 1.0, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Right, relatedBy: .Equal, toItem: quizParentView, attribute: .Right, multiplier: 1.0, constant: 0))
@@ -98,24 +115,30 @@ class GameViewController: UIViewController {
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[quizParentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[productNameLabel]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[productImageView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[quizSequenceLabel(availabilityIndicatorIconDimension)]-[productImageView]-[availabilityIndicatorImage(availabilityIndicatorIconDimension)]-horizontalImagePadding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[optionsView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[viewProductOnlineButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[skipQuestionButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[finishQuizButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[productNameLabel(>=0)]-[productImageView(200)]-[optionsView(100)]-[viewProductOnlineButton]-[skipQuestionButton]-[finishQuizButton]-40-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraint(NSLayoutConstraint(item: availabilityIndicatorImage, attribute: .Top, relatedBy: .Equal, toItem: productImageView, attribute: .Top, multiplier: 1.0, constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(item: availabilityIndicatorImage, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 24))
+        self.view.addConstraint(NSLayoutConstraint(item: quizSequenceLabel, attribute: .Top, relatedBy: .Equal, toItem: productImageView, attribute: .Top, multiplier: 1.0, constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(item: quizSequenceLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 24))
         
         
         RACObserve(self.gameViewModel, keyPath: "questionObject").ignore(nil).subscribeNext { (questionObject) in
             self.view.makeGravityTransition({
-                if let questionObject = questionObject as? QuizQuestion {
-                    self.productNameLabel.text = self.gameViewModel.selectedProduct?.name
-                    self.productImageView.sd_setImageWithURL(self.gameViewModel.selectedProduct?.imageURL, placeholderImage: UIImage(named: "placeholder_image"))
+                if let questionObject = questionObject as? QuizQuestion, selectedProduct = self.gameViewModel.selectedProduct {
+                    self.productNameLabel.text = selectedProduct.name
+                    self.productImageView.sd_setImageWithURL(selectedProduct.imageURL, placeholderImage: UIImage(named: "placeholder_image"))
                     self.optionsView.updateWithOptions(questionObject.options)
-                    let productURLAvailable = self.gameViewModel.selectedProduct?.productURL != nil
+                    let productURLAvailable = selectedProduct.productURL != nil
                     self.viewProductOnlineButton.userInteractionEnabled = productURLAvailable
                     self.viewProductOnlineButton.alpha = productURLAvailable ? 1.0 : 0.5
+                    self.availabilityIndicatorImage.image = UIImage(named: selectedProduct.availability)
+                    self.quizSequenceLabel.text = String(self.gameViewModel.questionIndex + 1)
                 }
             })
         }

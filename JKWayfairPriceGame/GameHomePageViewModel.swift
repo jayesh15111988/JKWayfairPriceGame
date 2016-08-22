@@ -40,7 +40,7 @@ class GameHomePageViewModel: NSObject {
         super.init()
         
         self.loadBaseCategories()
-        
+        self.loadProductsFromAPIwithCategoryIdentifier(self.defaultCategoryIdentifier, caching: true)
         startGameActionCommand = RACCommand(signalBlock: { [unowned self] (_) -> RACSignal! in
             self.searchWithSelectedCategoryIdentifier(self.categoryIdentifier)
             return RACSignal.empty()
@@ -71,11 +71,11 @@ class GameHomePageViewModel: NSObject {
         }
     }
     
-    func searchWithSelectedCategoryIdentifier(categoryIdentifier: String) {
+    func searchWithSelectedCategoryIdentifier(categoryIdentifier: String, caching: Bool = false) {
         let storedProductsResult = ProductDatabaseStorer().productsFromDatabaseWith(categoryIdentifier, entityType: ModelType.Product)
         switch storedProductsResult {
             case .SuccessMantleModels(_):
-                self.validateProducts(storedProductsResult, categoryIdentifier: categoryIdentifier)
+                self.validateProducts(storedProductsResult, categoryIdentifier: categoryIdentifier, caching: caching)
             case let Result.Failure(error):
                 print("Failed to retrieve data from database with error \(error.localizedDescription)")
             default:
@@ -83,23 +83,25 @@ class GameHomePageViewModel: NSObject {
         }
     }
     
-    func loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier: String) {
+    func loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier: String, caching: Bool = false) {
         self.productsLoading = true
         ProductApi.sharedInstance.productsWith(categoryIdentifier, format: .json, completion: { result in
-            self.validateProducts(result, categoryIdentifier: categoryIdentifier)
+            self.validateProducts(result, categoryIdentifier: categoryIdentifier, caching: caching)
         })
     }
     
-    func validateProducts(result: Result, categoryIdentifier: String) {
+    func validateProducts(result: Result, categoryIdentifier: String, caching: Bool = false) {
         self.productsLoading = false
         switch result {
         case let .SuccessMantleModels(models):
             if models.count > 0 {
                 if let models = models as? [Product] {
-                    productsCollection = models
-                    self.gameViewModel = GameViewModel(products: self.productsCollection)
-                    self.categoryIdentifier = categoryIdentifier
-                    defaultGameModeStatus = categoryIdentifier == defaultCategoryIdentifier
+                    if caching == false {
+                        productsCollection = models
+                        self.categoryIdentifier = categoryIdentifier
+                        self.gameViewModel = GameViewModel(products: self.productsCollection)
+                        defaultGameModeStatus = categoryIdentifier == defaultCategoryIdentifier
+                    }
                 } else if let models = models as? [ProductCategory] {
                     productCategoriesCollection = models                    
                 }
