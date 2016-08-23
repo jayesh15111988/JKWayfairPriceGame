@@ -28,33 +28,39 @@ class GameViewController: UIViewController {
     
     init(gameViewModel: GameViewModel) {
         self.gameViewModel = gameViewModel        
-        self.skipQuestionButton = UIButton()
+        self.skipQuestionButton = CustomButton()
         self.skipQuestionButton.translatesAutoresizingMaskIntoConstraints = false
-        self.skipQuestionButton.setTitleColor(.blackColor(), forState: .Normal)
+        self.skipQuestionButton.setTitleColor(.whiteColor(), forState: .Normal)
+        self.skipQuestionButton.backgroundColor = Appearance.buttonBackgroundColor()
+        self.skipQuestionButton.titleLabel?.font = Appearance.buttonsFont()
         self.skipQuestionButton.rac_command = self.gameViewModel.skipQuestionActionCommand
         self.skipQuestionButton.setTitle("Skip", forState: .Normal)
         
         self.quizParentView = UIView()
         self.quizParentView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.finishQuizButton = UIButton()
+        self.finishQuizButton = CustomButton()
         self.finishQuizButton.translatesAutoresizingMaskIntoConstraints = false
-        self.finishQuizButton.setTitleColor(.blackColor(), forState: .Normal)
+        self.finishQuizButton.setTitleColor(.whiteColor(), forState: .Normal)
+        self.finishQuizButton.backgroundColor = Appearance.buttonBackgroundColor()
         self.finishQuizButton.rac_command = self.gameViewModel.finisQuizActionCommand
+        self.finishQuizButton.titleLabel?.font = Appearance.buttonsFont()
         self.finishQuizButton.setTitle("Finish", forState: .Normal)
         
-        self.viewProductOnlineButton = UIButton()
+        self.viewProductOnlineButton = CustomButton()
         self.viewProductOnlineButton.translatesAutoresizingMaskIntoConstraints = false
-        self.viewProductOnlineButton.setTitleColor(.blackColor(), forState: .Normal)
+        self.viewProductOnlineButton.setTitleColor(.whiteColor(), forState: .Normal)
+        self.viewProductOnlineButton.backgroundColor = Appearance.buttonBackgroundColor()
         self.viewProductOnlineButton.rac_command = self.gameViewModel.viewProductOnlineActionCommand
+        self.viewProductOnlineButton.titleLabel?.font = Appearance.buttonsFont()
         self.viewProductOnlineButton.setTitle("View Product Online", forState: .Normal)
         
         self.productImageView = UIImageView()
         self.productImageView.translatesAutoresizingMaskIntoConstraints = false
         self.productImageView.contentMode = .ScaleAspectFit
-        self.productImageView.clipsToBounds = true
-        self.productImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.productImageView.clipsToBounds = true        
         self.productImageView.layer.borderWidth = 1.0
+        self.productImageView.layer.borderColor = Appearance.defaultAppColor().CGColor
         
         self.availabilityIndicatorImage = UIImageView()
         self.availabilityIndicatorImage.translatesAutoresizingMaskIntoConstraints = false
@@ -63,17 +69,19 @@ class GameViewController: UIViewController {
         
         self.availabilityLabel = UILabel()
         self.availabilityLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.availabilityLabel.font = UIFont.systemFontOfSize(12)
-        self.availabilityLabel.numberOfLines = 0        
+        self.availabilityLabel.font = Appearance.smallDefaultFont()
+        self.availabilityLabel.numberOfLines = 0
         
         self.productNameLabel = UILabel()
         self.productNameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.productNameLabel.numberOfLines = 0
+        self.productNameLabel.font = Appearance.titleFont()
         self.productNameLabel.textAlignment = .Center
         
         self.quizSequenceLabel = UILabel()
         self.quizSequenceLabel.translatesAutoresizingMaskIntoConstraints = false
         self.quizSequenceLabel.numberOfLines = 0
+        self.quizSequenceLabel.font = Appearance.defaultFont()
         self.quizSequenceLabel.textAlignment = .Center
         
         self.optionsView = OptionsView()
@@ -129,11 +137,11 @@ class GameViewController: UIViewController {
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[quizParentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[productNameLabel(<=400)]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[quizSequenceLabel(availabilityIndicatorIconDimension)]-[productImageView(<=400)]-[availabilityIndicatorImage(availabilityIndicatorIconDimension)]-horizontalImagePadding-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[quizSequenceLabel(>=0)]-[productImageView(<=400)]-[availabilityIndicatorImage(availabilityIndicatorIconDimension)]-horizontalImagePadding-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[optionsView(<=400)]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[viewProductOnlineButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[skipQuestionButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[finishQuizButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[viewProductOnlineButton]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[skipQuestionButton]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[finishQuizButton]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[productNameLabel(>=0)]-[productImageView(200)]-[optionsView(100)]-[viewProductOnlineButton]-[skipQuestionButton]-[finishQuizButton]-40-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraint(NSLayoutConstraint(item: availabilityIndicatorImage, attribute: .Top, relatedBy: .Equal, toItem: productImageView, attribute: .Top, multiplier: 1.0, constant: 0))
@@ -174,7 +182,7 @@ class GameViewController: UIViewController {
                 let viewWidth = self.view.frame.width > 300 ? 300 : self.view.frame.width
                 let finalQuizScoreView = FinalScoreIndicatorView(viewModel: finalQuizScoreViewModel, frame: CGRectMake(-200, -200, viewWidth, 200))
                 self.view.addSubview(finalQuizScoreView)
-                self.snapBehavior = UISnapBehavior(item: finalQuizScoreView, snapToPoint: self.view.center)
+                self.snapBehavior = UISnapBehavior(item: finalQuizScoreView, snapToPoint: CGPoint(x: self.view.center.x, y: self.view.center.y - 100))
                 self.snapBehavior?.damping = 0.4
                 self.dynamicAnimator?.addBehavior(self.snapBehavior!)
             }

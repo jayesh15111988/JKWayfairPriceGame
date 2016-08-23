@@ -26,7 +26,7 @@ class ProductWebViewController: UIViewController, UIWebViewDelegate {
         self.activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         self.activityIndicatorView.hidesWhenStopped = true
         self.activityIndicatorView.activityIndicatorViewStyle = .WhiteLarge
-        self.activityIndicatorView.color = .greenColor()
+        self.activityIndicatorView.color = Appearance.defaultAppColor()
         
         self.errorMessage = ""
         

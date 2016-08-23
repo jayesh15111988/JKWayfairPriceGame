@@ -18,8 +18,8 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     let categoryInputTextField: UITextField
     var selectedCategoryIdentifier: String
     let instructionsViewController: GameInstructionsViewController
-    let beginGameButton: UIButton
-    let beginGameWithDefaultsButton: UIButton
+    let beginGameButton: CustomButton
+    let beginGameWithDefaultsButton: CustomButton
     
     init(viewModel: GameHomePageViewModel) {
         self.viewModel = viewModel
@@ -28,20 +28,24 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.categoryInputTextField.translatesAutoresizingMaskIntoConstraints = false
         self.categoryInputTextField.borderStyle = .Line
         self.categoryInputTextField.textAlignment = .Center
-        self.categoryInputTextField.font = UIFont.systemFontOfSize(16)
+        self.categoryInputTextField.font = Appearance.defaultFont()
         self.categoryInputTextField.placeholder = "Please Choose Product Category"
         self.instructionsViewController = GameInstructionsViewController(viewModel: GameInstructionsViewModel())
         
-        beginGameButton = UIButton(type: .System)
+        beginGameButton = CustomButton()
         beginGameButton.translatesAutoresizingMaskIntoConstraints = false
         beginGameButton.setTitle("Begin Game", forState: .Normal)
-        beginGameButton.setTitleColor(.blackColor(), forState: .Normal)
+        beginGameButton.titleLabel?.font = Appearance.buttonsFont()
+        beginGameButton.setTitleColor(.whiteColor(), forState: .Normal)
+        beginGameButton.backgroundColor = Appearance.buttonBackgroundColor()
         beginGameButton.rac_command = self.viewModel.startGameActionCommand
         
-        beginGameWithDefaultsButton = UIButton(type: .System)
+        beginGameWithDefaultsButton = CustomButton()
         beginGameWithDefaultsButton.translatesAutoresizingMaskIntoConstraints = false
         beginGameWithDefaultsButton.setTitle("Begin Game Default Category", forState: .Normal)
-        beginGameWithDefaultsButton.setTitleColor(.blackColor(), forState: .Normal)
+        beginGameWithDefaultsButton.titleLabel?.font = Appearance.buttonsFont()
+        beginGameWithDefaultsButton.setTitleColor(.whiteColor(), forState: .Normal)
+        beginGameWithDefaultsButton.backgroundColor = Appearance.buttonBackgroundColor()
         beginGameWithDefaultsButton.rac_command = self.viewModel.startGameWithDefaultActionCommand
         
         super.init(nibName: nil, bundle: nil)
@@ -56,6 +60,8 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         super.viewDidLoad()
         self.title = "Price Guessing Game"
         self.view.backgroundColor = UIColor.whiteColor()
+        
+        self.setupAppearance()        
         
         let instructionsButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
         instructionsButton.setImage(UIImage(named: "instructions"), forState: .Normal)
@@ -76,11 +82,12 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.activityIndicatorViewStyle = .WhiteLarge
         activityIndicatorView.hidesWhenStopped = true
-        activityIndicatorView.color = .redColor();
+        activityIndicatorView.color = Appearance.defaultAppColor();
         
         let basicInstructionsLabel = UILabel()
         basicInstructionsLabel.translatesAutoresizingMaskIntoConstraints = false
         basicInstructionsLabel.numberOfLines = 0
+        basicInstructionsLabel.font = Appearance.titleFont()
         basicInstructionsLabel.text = "Please select the category of your choice from the picker below and press Begin Game button to start the quiz"
         contentView.addSubview(basicInstructionsLabel)
         
@@ -90,6 +97,8 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         pickerView.dataSource = self
         
         let toolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.width, 44))
+        toolbar.tintColor = .whiteColor()
+        toolbar.barTintColor = Appearance.defaultAppColor()
         toolbar.items = [UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancelSelection)), UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(finishSelection))]
     
         categoryInputTextField.inputView = pickerView
@@ -99,10 +108,12 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         contentView.addSubview(beginGameButton)
         contentView.addSubview(beginGameWithDefaultsButton)
         
-        let resetCategoriesButton = UIButton(type: .System)
+        let resetCategoriesButton = CustomButton()
         resetCategoriesButton.translatesAutoresizingMaskIntoConstraints = false
         resetCategoriesButton.setTitle("Reset Categories", forState: .Normal)
-        resetCategoriesButton.setTitleColor(.blackColor(), forState: .Normal)
+        resetCategoriesButton.setTitleColor(.whiteColor(), forState: .Normal)
+        resetCategoriesButton.backgroundColor = Appearance.buttonBackgroundColor()
+        resetCategoriesButton.titleLabel?.font = Appearance.buttonsFont()
         resetCategoriesButton.rac_command = self.viewModel.resetCategoriesActionCommand
         contentView.addSubview(resetCategoriesButton)
         
@@ -134,11 +145,11 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[basicInstructionsLabel(<=400)]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[categoryInputTextField(<=400)]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[beginGameButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[beginGameWithDefaultsButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[resetCategoriesButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[beginGameButton]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[beginGameWithDefaultsButton]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[spacer1(==20@999)]-[resetCategoriesButton]-[spacer2(==spacer1@999)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-defaultViewPadding-[basicInstructionsLabel(>=0)]-defaultViewPadding-[categoryInputTextField(inputFieldHeight)]-[beginGameButton(inputFieldHeight)]-[beginGameWithDefaultsButton(inputFieldHeight)]-[resetCategoriesButton(inputFieldHeight)]-bottomViewPadding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-defaultViewPadding-[basicInstructionsLabel(>=0)]-defaultViewPadding-[categoryInputTextField(inputFieldHeight)]-defaultViewPadding-[beginGameButton(inputFieldHeight)]-[beginGameWithDefaultsButton(inputFieldHeight)]-[resetCategoriesButton(inputFieldHeight)]-bottomViewPadding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
         
         RACObserve(viewModel, keyPath: "productsLoading").subscribeNext { (loading) in
             if let loading = loading as? Bool {
@@ -212,9 +223,10 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func buttonsUserInteractionEnable(enable: Bool) {
-        self.beginGameButton.userInteractionEnabled = enable
+        let enableBeginGameButton = enable && viewModel.defaultGameModeStatus == false
+        self.beginGameButton.userInteractionEnabled = enableBeginGameButton
+        self.beginGameButton.alpha = enableBeginGameButton == true ? 1.0 : 0.5
         self.beginGameWithDefaultsButton.userInteractionEnabled = enable
-        self.beginGameButton.alpha = enable == true ? 1.0 : 0.5
         self.beginGameWithDefaultsButton.alpha = enable == true ? 1.0 : 0.5
     }
     

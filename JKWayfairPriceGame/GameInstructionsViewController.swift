@@ -27,12 +27,15 @@ class GameInstructionsViewController: UIViewController {
         self.view.backgroundColor = .whiteColor()
         self.automaticallyAdjustsScrollViewInsets = false
         self.title = "Instructions"
+        
+        self.setupAppearance()
+        
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.selectable = false
         textView.editable = false
         textView.text = viewModel.instructions
-        textView.font = UIFont.systemFontOfSize(16)
+        textView.font = Appearance.defaultFont()
         self.view.addSubview(textView)
         
         let topLayoutGuide = self.topLayoutGuide

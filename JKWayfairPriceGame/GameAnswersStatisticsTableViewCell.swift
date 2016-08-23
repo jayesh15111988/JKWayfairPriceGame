@@ -14,10 +14,10 @@ enum StatsLabel: Int {
     
     func labelColor() -> UIColor {
         switch self {
-        case .Correct:
-            return UIColor(red: 0.55, green: 0.27, blue: 0.67, alpha: 1.0)
-        case .Incorrect:
-            return UIColor(red: 0.75, green: 0.22, blue: 0.16, alpha: 1.0)
+            case .Correct:
+                return Appearance.correctAnswerColor()
+            case .Incorrect:
+                return Appearance.inCorrectAnswerColor()
         }
     }
 }
@@ -29,7 +29,8 @@ class GameAnswersStatisticsTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         self.answersStatsLabel = UILabel()
         self.answersStatsLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.answersStatsLabel.numberOfLines = 0        
+        self.answersStatsLabel.numberOfLines = 0
+        self.answersStatsLabel.font = Appearance.defaultFont()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(self.answersStatsLabel)
         

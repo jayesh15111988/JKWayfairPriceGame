@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {        
         let homePageViewController = GameHomePageViewController(viewModel: GameHomePageViewModel())
         self.window?.rootViewController = UINavigationController(rootViewController: homePageViewController)
         self.window?.makeKeyAndVisible()

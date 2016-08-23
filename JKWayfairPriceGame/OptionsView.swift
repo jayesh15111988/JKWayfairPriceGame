@@ -24,9 +24,12 @@ class OptionsView: UIView {
         super.init(frame: CGRect.zero)
         
         for index in 0..<4 {
-            let button = UIButton(type: .System)
+            let button = CustomButton()
             button.translatesAutoresizingMaskIntoConstraints = false
             button.layer.borderWidth = 1.0
+            button.layer.cornerRadius = 10
+            button.titleLabel?.textColor = .whiteColor()
+            button.backgroundColor = Appearance.buttonBackgroundColor()
             button.titleLabel?.textAlignment = .Center
             button.layer.borderColor = UIColor.lightGrayColor().CGColor
             button.bk_whenTapped({
