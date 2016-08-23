@@ -14,6 +14,7 @@ class ProductWebViewController: UIViewController, UIWebViewDelegate {
     let viewModel: ProductWebViewerViewModel
     let webView: UIWebView
     let activityIndicatorView: UIActivityIndicatorView
+    var errorMessage: String
     
     init (viewModel: ProductWebViewerViewModel) {
         self.viewModel = viewModel
@@ -26,6 +27,8 @@ class ProductWebViewController: UIViewController, UIWebViewDelegate {
         self.activityIndicatorView.hidesWhenStopped = true
         self.activityIndicatorView.activityIndicatorViewStyle = .WhiteLarge
         self.activityIndicatorView.color = .greenColor()
+        
+        self.errorMessage = ""
         
         super.init(nibName: nil, bundle: nil)
         self.webView.delegate = self
@@ -59,7 +62,13 @@ class ProductWebViewController: UIViewController, UIWebViewDelegate {
     
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         activityIndicatorView.stopAnimating()
-        print("Failed to load webview with \(self.viewModel.product.productURL!). Failed with error \(error?.localizedDescription)")
+        if let errorMessage = error?.localizedDescription {
+            let alertController = UIAlertController(title: self.viewModel.product.name, message: errorMessage, preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
