@@ -21,6 +21,7 @@ class GameViewController: UIViewController {
     let optionsView: OptionsView
     let quizParentView: UIView
     let availabilityIndicatorImage: UIImageView
+    let availabilityLabel: UILabel
     
     var dynamicAnimator: UIDynamicAnimator?
     var snapBehavior: UISnapBehavior?
@@ -59,6 +60,11 @@ class GameViewController: UIViewController {
         self.availabilityIndicatorImage.translatesAutoresizingMaskIntoConstraints = false
         self.availabilityIndicatorImage.contentMode = .ScaleAspectFit
         self.availabilityIndicatorImage.clipsToBounds = true
+        
+        self.availabilityLabel = UILabel()
+        self.availabilityLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.availabilityLabel.font = UIFont.systemFontOfSize(12)
+        self.availabilityLabel.numberOfLines = 0        
         
         self.productNameLabel = UILabel()
         self.productNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -107,9 +113,10 @@ class GameViewController: UIViewController {
         quizParentView.addSubview(self.productNameLabel)
         quizParentView.addSubview(self.availabilityIndicatorImage)
         quizParentView.addSubview(self.quizSequenceLabel)
+        quizParentView.addSubview(self.availabilityLabel)
         
         let topLayoutGuide = self.topLayoutGuide
-        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "scrollView": scrollView, "quizParentView": quizParentView, "productNameLabel": productNameLabel, "quizSequenceLabel": quizSequenceLabel, "productImageView": productImageView, "availabilityIndicatorImage": availabilityIndicatorImage, "viewProductOnlineButton": viewProductOnlineButton, "optionsView": optionsView, "skipQuestionButton": skipQuestionButton, "finishQuizButton": finishQuizButton, "spacer1": spacer1, "spacer2": spacer2]
+        let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "scrollView": scrollView, "quizParentView": quizParentView, "productNameLabel": productNameLabel, "quizSequenceLabel": quizSequenceLabel, "productImageView": productImageView, "availabilityIndicatorImage": availabilityIndicatorImage, "availabilityLabel": availabilityLabel, "viewProductOnlineButton": viewProductOnlineButton, "optionsView": optionsView, "skipQuestionButton": skipQuestionButton, "finishQuizButton": finishQuizButton, "spacer1": spacer1, "spacer2": spacer2]
         let metrics = ["horizontalImagePadding": 20, "availabilityIndicatorIconDimension": 24]
         
         self.view.addConstraint(NSLayoutConstraint(item: self.view, attribute: .Left, relatedBy: .Equal, toItem: quizParentView, attribute: .Left, multiplier: 1.0, constant: 0))
@@ -134,6 +141,9 @@ class GameViewController: UIViewController {
         self.view.addConstraint(NSLayoutConstraint(item: quizSequenceLabel, attribute: .Top, relatedBy: .Equal, toItem: productImageView, attribute: .Top, multiplier: 1.0, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: quizSequenceLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 24))
         
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[availabilityIndicatorImage][availabilityLabel(availabilityIndicatorIconDimension)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[productImageView]-[availabilityLabel]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        
         
         RACObserve(self.gameViewModel, keyPath: "questionObject").ignore(nil).subscribeNext { (questionObject) in
             self.view.makeGravityTransition({
@@ -146,6 +156,7 @@ class GameViewController: UIViewController {
                     self.viewProductOnlineButton.alpha = productURLAvailable ? 1.0 : 0.5
                     self.availabilityIndicatorImage.image = UIImage(named: selectedProduct.availability)
                     self.quizSequenceLabel.text = String(self.gameViewModel.questionIndex + 1)
+                    self.availabilityLabel.text = selectedProduct.availability
                 }
             })
         }
