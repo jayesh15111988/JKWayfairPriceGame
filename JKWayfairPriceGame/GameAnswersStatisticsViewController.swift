@@ -19,6 +19,7 @@ class GameAnswersStatisticsViewController: UIViewController, UITableViewDelegate
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableFooterView = UITableView()
+        tableView.separatorStyle = .SingleLine
         tableView.allowsSelection = false
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 64
