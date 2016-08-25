@@ -11,35 +11,36 @@ import Foundation
 
 extension UIView {
     
-    func makeGravityTransition(change: () -> Void) {
+    func makeGravityTransition(updateView: () -> Void) {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0)
         self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let currentViewScreenshot = UIGraphicsGetImageFromCurrentImageContext()
         let frontConverImageView = UIImageView(image: currentViewScreenshot)
         frontConverImageView.frame = self.bounds
         self.addSubview(frontConverImageView)
-        change()
+        updateView()
         frontConverImageView.addGravity()
     }
     
     func addGravity() {
-        if let superView = self.superview {
-        let dynamicAnimator = UIDynamicAnimator(referenceView: superview!)
-        let gravityBehaviour = UIGravityBehavior(items: [self])
-        let dynamicItemBehaviour = UIDynamicItemBehavior(items: [self])
-        dynamicItemBehaviour.allowsRotation = true
-        gravityBehaviour.gravityDirection = CGVectorMake (-2, 5)
-        gravityBehaviour.action = {
-            if (self.frame.intersects(superView.frame) == false) {
-                    self.removeFromSuperview()
-                    dynamicAnimator.removeAllBehaviors()
-            }
-        }
         
-        dynamicAnimator.removeAllBehaviors()
-        dynamicItemBehaviour.addAngularVelocity(CGFloat(5), forItem: self)
-        dynamicAnimator.addBehavior(dynamicItemBehaviour)
-        dynamicAnimator.addBehavior(gravityBehaviour)
+        if let superView = self.superview {
+            let dynamicAnimator = UIDynamicAnimator(referenceView: superview!)
+            let gravityBehaviour = UIGravityBehavior(items: [self])
+            let dynamicItemBehaviour = UIDynamicItemBehavior(items: [self])
+            dynamicItemBehaviour.allowsRotation = true
+            gravityBehaviour.gravityDirection = CGVectorMake (-2, 5)
+            gravityBehaviour.action = {
+                if (self.frame.intersects(superView.frame) == false) {
+                        self.removeFromSuperview()
+                        dynamicAnimator.removeAllBehaviors()
+                }
+            }
+        
+            dynamicAnimator.removeAllBehaviors()
+            dynamicItemBehaviour.addAngularVelocity(CGFloat(5), forItem: self)
+            dynamicAnimator.addBehavior(dynamicItemBehaviour)
+            dynamicAnimator.addBehavior(gravityBehaviour)
         }
     }
     

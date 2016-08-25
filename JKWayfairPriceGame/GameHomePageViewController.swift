@@ -30,7 +30,7 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.categoryInputTextField.textAlignment = .Center
         self.categoryInputTextField.font = Appearance.defaultFont()
         self.categoryInputTextField.placeholder = "Please Choose Product Category"
-        self.instructionsViewController = GameInstructionsViewController(viewModel: GameInstructionsViewModel())
+        self.instructionsViewController = GameInstructionsViewController(viewModel: GameInstructionsViewModel(instructionsFileName: "instructions"))
         
         beginGameButton = CustomButton()
         beginGameButton.translatesAutoresizingMaskIntoConstraints = false

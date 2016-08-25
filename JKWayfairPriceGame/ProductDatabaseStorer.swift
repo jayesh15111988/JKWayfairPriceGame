@@ -30,7 +30,6 @@ class ProductDatabaseStorer: ModelStorerProtocol {
                 print(error.localizedDescription)
             }
         }
-        
         do {
             try managedContext.save()
             // Indicator in database to indicate the product values have been stored in the database.

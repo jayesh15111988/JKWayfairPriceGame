@@ -23,7 +23,7 @@ class JSONReader {
                 print("Failed to read json from file. Failed with error \(error.localizedDescription)")
             }
         } else {
-            print("Invalid filename or path")
+            print("Invalid filename or path \(name)")
         }
         return nil
     }

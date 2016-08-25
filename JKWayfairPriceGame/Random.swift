@@ -16,14 +16,14 @@ func positiveRandomNumberInRange(lowerValue: UInt32, upperValue: UInt32) -> Int 
     return Int(arc4random_uniform(upperValue - lowerValue + 1) + lowerValue)
 }
 
-func randomChoicesWith(originalNumber: Int, numberOfRandomOptions: Int, randomOffset: Int) -> [QuizOption] {
-    var randomChoices: [Int] = [originalNumber]
+func randomChoicesWith(correctValue: Int, numberOfRandomOptions: Int, randomOffset: Int) -> [QuizOption] {
+    var randomChoices: [Int] = [correctValue]
     
     while randomChoices.count < numberOfRandomOptions {
         
-        let lowerOffset = ((originalNumber - randomOffset) <= 0) ? 1 : originalNumber - randomOffset
+        let lowerOffset = ((correctValue - randomOffset) <= 0) ? 1 : correctValue - randomOffset
         
-        let randomChoice = Int(positiveRandomNumberInRange(UInt32(lowerOffset), upperValue: UInt32(originalNumber + randomOffset)))
+        let randomChoice = Int(positiveRandomNumberInRange(UInt32(lowerOffset), upperValue: UInt32(correctValue + randomOffset)))
         
         if (randomChoices.contains(randomChoice) == false) {
             randomChoices.append(randomChoice)
@@ -31,10 +31,10 @@ func randomChoicesWith(originalNumber: Int, numberOfRandomOptions: Int, randomOf
     }
     randomChoices = randomChoices.shuffle()
     
-    let randomChoicesAsString = randomChoices.map({
+    let randomQuizOptions = randomChoices.map({
         (value: Int) -> QuizOption in
-        return QuizOption(name: String(value), isCorrectOption: value == originalNumber)
+        return QuizOption(name: String(value), isCorrectOption: value == correctValue)
     })
     
-    return randomChoicesAsString
+    return randomQuizOptions
 }

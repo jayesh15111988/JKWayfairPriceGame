@@ -36,7 +36,7 @@ class GameHomePageViewModel: NSObject {
         self.productCategoriesCollection = []
         self.errorMessage = ""
         self.productsLoading = false
-        self.gameInstructionsViewModel = GameInstructionsViewModel()
+        self.gameInstructionsViewModel = GameInstructionsViewModel(instructionsFileName: "instructions")
         self.defaultGameModeStatus = true
         self.categoryIdentifier = ""
         
@@ -81,45 +81,45 @@ class GameHomePageViewModel: NSObject {
         let storedProductsResult = ProductDatabaseStorer().productsFromDatabaseWith(categoryIdentifier, entityType: ModelType.Product)
         switch storedProductsResult {
             case .SuccessMantleModels(_):
-                self.validateProducts(storedProductsResult, categoryIdentifier: categoryIdentifier, caching: caching)
+                self.storeProducts(storedProductsResult, categoryIdentifier: categoryIdentifier, caching: caching)
             case let Result.Failure(error):
-                print("Failed to retrieve data from database with error \(error.localizedDescription)")
+                self.errorMessage = "Failed to retrieve data from database with error \(error.localizedDescription)"
             default:
-                print("Unable to fetch records from database")
+                self.errorMessage = "Unable to fetch records from database"
         }
     }
     
     func loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier: String, caching: Bool = false) {
         self.productsLoading = true
         ProductApi.sharedInstance.productsWith(categoryIdentifier, format: .json, completion: { result in
-            self.validateProducts(result, categoryIdentifier: categoryIdentifier, caching: caching)
+            self.storeProducts(result, categoryIdentifier: categoryIdentifier, caching: caching)
         })
     }
     
-    func validateProducts(result: Result, categoryIdentifier: String, caching: Bool = false) {
+    func storeProducts(result: Result, categoryIdentifier: String, caching: Bool = false) {
         self.productsLoading = false
         switch result {
-        case let .SuccessMantleModels(models):
-            if models.count > 0 {
-                if let models = models as? [Product] {
-                    if caching == false {
-                        productsCollection = models
-                        self.categoryIdentifier = categoryIdentifier
-                        self.gameViewModel = GameViewModel(products: self.productsCollection)
-                    } else {
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: DefaultCategoriesStoredIndicator)
+            case let .SuccessMantleModels(models):
+                if models.count > 0 {
+                    if let models = models as? [Product] {
+                        if caching == false {
+                            productsCollection = models
+                            self.categoryIdentifier = categoryIdentifier
+                            self.gameViewModel = GameViewModel(products: self.productsCollection)
+                        } else {
+                            NSUserDefaults.standardUserDefaults().setBool(true, forKey: DefaultCategoriesStoredIndicator)
+                        }
+                        defaultGameModeStatus = categoryIdentifier == defaultCategoryIdentifier
+                    } else if let models = models as? [ProductCategory] {
+                        productCategoriesCollection = models                    
                     }
-                    defaultGameModeStatus = categoryIdentifier == defaultCategoryIdentifier
-                } else if let models = models as? [ProductCategory] {
-                    productCategoriesCollection = models                    
+                } else {
+                    self.loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier)
                 }
-            } else {
-                self.loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier)
-            }
-        case let .Failure(error):
-            errorMessage = error.localizedDescription
-        case .SuccessCoreDataModels(_):
-            print("Retrieved Core data models")
+            case let .Failure(error):
+                errorMessage = error.localizedDescription
+            case .SuccessCoreDataModels(_):
+                print("Retrieved Core data models")
         }
     }
 }

@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-    
+extension UIViewController {    
     func setupAppearance() {
         self.navigationController?.navigationBar.barTintColor = Appearance.defaultAppColor()
         self.navigationController?.navigationBar.translucent = false

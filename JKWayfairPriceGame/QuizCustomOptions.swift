@@ -35,14 +35,14 @@ class QuizCustomOptions {
     func textColor() -> UIColor {
         var color: UIColor
         switch self.score {
-        case 0..<0.4:
-            color = Appearance.lowScoreColor()
-        case 0.4..<0.7:
-            color = Appearance.mediumScoreColor()
-        case 0.7..<1.0:
-            color = Appearance.highScoreColor()
-        default:
-            color = Appearance.perfectScoreColor()
+            case 0..<0.4:
+                color = Appearance.lowScoreColor()
+            case 0.4..<0.7:
+                color = Appearance.mediumScoreColor()
+            case 0.7..<1.0:
+                color = Appearance.highScoreColor()
+            default:
+                color = Appearance.perfectScoreColor()
         }
         return color
     }

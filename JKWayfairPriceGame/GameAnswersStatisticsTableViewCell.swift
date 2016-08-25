@@ -32,6 +32,7 @@ class GameAnswersStatisticsTableViewCell: UITableViewCell {
         self.answersStatsLabel.numberOfLines = 0
         self.answersStatsLabel.font = Appearance.defaultFont()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         self.contentView.addSubview(self.answersStatsLabel)
         
         let views = ["answersStatsLabel": answersStatsLabel]

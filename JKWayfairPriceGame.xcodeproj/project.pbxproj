@@ -40,12 +40,11 @@
 		38592DDB1D6A5E680051E62F /* ProductBaseCategories.json in Resources */ = {isa = PBXBuildFile; fileRef = 38592DDA1D6A5E680051E62F /* ProductBaseCategories.json */; };
 		38592DDD1D6A70720051E62F /* GameInstructionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DDC1D6A70720051E62F /* GameInstructionsViewModel.swift */; };
 		38592DDF1D6A710A0051E62F /* GameInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DDE1D6A710A0051E62F /* GameInstructionsViewController.swift */; };
-		38592DE11D6A71620051E62F /* Instructions.json in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE01D6A71620051E62F /* Instructions.json */; };
+		38592DE11D6A71620051E62F /* instructions.json in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE01D6A71620051E62F /* instructions.json */; };
 		38592DE31D6A743E0051E62F /* instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE21D6A743E0051E62F /* instructions.png */; };
 		38592DE61D6A826E0051E62F /* Available.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE41D6A826E0051E62F /* Available.png */; };
 		38592DE71D6A826E0051E62F /* Unavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE51D6A826E0051E62F /* Unavailable.png */; };
 		388B24EB1D66A69F00638688 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EA1D66A69F00638688 /* RACObserve.swift */; };
-		388B24ED1D66A6BF00638688 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EC1D66A6BF00638688 /* RAC.swift */; };
 		388B24EF1D66A6FB00638688 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */; };
 		388B24F21D66BD6700638688 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24F11D66BD6700638688 /* Random.swift */; };
 		38EC479D1D6BE51E0004CAA2 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC479C1D6BE51E0004CAA2 /* Appearance.swift */; };
@@ -104,12 +103,11 @@
 		38592DDA1D6A5E680051E62F /* ProductBaseCategories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProductBaseCategories.json; sourceTree = "<group>"; };
 		38592DDC1D6A70720051E62F /* GameInstructionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInstructionsViewModel.swift; sourceTree = "<group>"; };
 		38592DDE1D6A710A0051E62F /* GameInstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInstructionsViewController.swift; sourceTree = "<group>"; };
-		38592DE01D6A71620051E62F /* Instructions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Instructions.json; sourceTree = "<group>"; };
+		38592DE01D6A71620051E62F /* instructions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = instructions.json; sourceTree = "<group>"; };
 		38592DE21D6A743E0051E62F /* instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructions.png; sourceTree = "<group>"; };
 		38592DE41D6A826E0051E62F /* Available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Available.png; sourceTree = "<group>"; };
 		38592DE51D6A826E0051E62F /* Unavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unavailable.png; sourceTree = "<group>"; };
 		388B24EA1D66A69F00638688 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACObserve.swift; sourceTree = "<group>"; };
-		388B24EC1D66A6BF00638688 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
 		388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		388B24F11D66BD6700638688 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		38EC479C1D6BE51E0004CAA2 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
@@ -300,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				38592DDA1D6A5E680051E62F /* ProductBaseCategories.json */,
-				38592DE01D6A71620051E62F /* Instructions.json */,
+				38592DE01D6A71620051E62F /* instructions.json */,
 			);
 			name = JSONs;
 			sourceTree = "<group>";
@@ -309,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				388B24EA1D66A69F00638688 /* RACObserve.swift */,
-				388B24EC1D66A6BF00638688 /* RAC.swift */,
 				388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */,
 			);
 			name = "Reactive Cocoa Utilities";
@@ -425,7 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38592DE11D6A71620051E62F /* Instructions.json in Resources */,
+				38592DE11D6A71620051E62F /* instructions.json in Resources */,
 				38592DE61D6A826E0051E62F /* Available.png in Resources */,
 				38592DDB1D6A5E680051E62F /* ProductBaseCategories.json in Resources */,
 				38592DE31D6A743E0051E62F /* instructions.png in Resources */,
@@ -501,7 +498,6 @@
 			files = (
 				388B24EF1D66A6FB00638688 /* RACSignal+Extensions.swift in Sources */,
 				38EC479F1D6BE6580004CAA2 /* Color.swift in Sources */,
-				388B24ED1D66A6BF00638688 /* RAC.swift in Sources */,
 				38592DD11D6940550051E62F /* GameAnswersStatisticsViewController.swift in Sources */,
 				38EC47A31D6BFC2D0004CAA2 /* CustomButton.swift in Sources */,
 				381F11D21D64170E008C3A4E /* ProductDatabaseStorer.swift in Sources */,
