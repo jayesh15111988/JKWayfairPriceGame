@@ -49,7 +49,7 @@ class GameViewModel: NSObject {
             self.finalQuizScoreViewModel = FinalScoreIndicatorViewModel(gameViewModel: self)
             self.enableViewInteraction = false
             RACObserve(self.finalQuizScoreViewModel, keyPath: "finalScoreScreenOption").skip(1).subscribeNext {
-                (finalScoreScreenOption) in
+                [unowned self] (finalScoreScreenOption) in
                 if let finalScoreScreenOption = self.finalQuizScoreViewModel?.finalScoreScreenOption {
                     self.handleFinalScoreScreenOption(finalScoreScreenOption)
                 }
@@ -64,7 +64,7 @@ class GameViewModel: NSObject {
             return RACSignal.empty()
         })
         
-        RACObserve(self, keyPath: "selectedOptionIndex").skip(1).subscribeNext{ (index) in
+        RACObserve(self, keyPath: "selectedOptionIndex").skip(1).subscribeNext{ [unowned self] (index) in
             if let index = index as? Int {
                 let selectedOption = self.questionObject?.options[index]
                 self.totalScore = selectedOption?.isCorrectOption == true ? self.totalScore + self.pointsPerCorrectAnswer : self.totalScore

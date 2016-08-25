@@ -153,7 +153,7 @@ class GameViewController: UIViewController {
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[productImageView]-[availabilityLabel]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
         
         
-        RACObserve(self.gameViewModel, keyPath: "questionObject").ignore(nil).subscribeNext { (questionObject) in
+        RACObserve(self.gameViewModel, keyPath: "questionObject").ignore(nil).subscribeNext { [unowned self] (questionObject) in
             self.view.makeGravityTransition({
                 if let questionObject = questionObject as? QuizQuestion, selectedProduct = self.gameViewModel.selectedProduct {
                     self.productNameLabel.text = selectedProduct.name
@@ -169,7 +169,7 @@ class GameViewController: UIViewController {
             })
         }
         
-        RACObserve(self.gameViewModel, keyPath: "productWebViewerViewModel").ignore(nil).subscribeNext { (productWebViewerViewModel) in
+        RACObserve(self.gameViewModel, keyPath: "productWebViewerViewModel").ignore(nil).subscribeNext { [unowned self] (productWebViewerViewModel) in
             if let productWebViewerViewModel = productWebViewerViewModel as? ProductWebViewerViewModel {
                 let webViewerViewController = ProductWebViewController(viewModel: productWebViewerViewModel)
                 self.navigationController?.pushViewController(webViewerViewController, animated: true)
@@ -177,7 +177,7 @@ class GameViewController: UIViewController {
         }
         
         RACObserve(self.gameViewModel, keyPath: "finalQuizScoreViewModel").ignore(nil).subscribeNext {
-            (finalQuizScoreViewModel) in
+            [unowned self] (finalQuizScoreViewModel) in
             if let finalQuizScoreViewModel = finalQuizScoreViewModel as? FinalScoreIndicatorViewModel {
                 let viewWidth = self.view.frame.width > 300 ? 300 : self.view.frame.width
                 let finalQuizScoreView = FinalScoreIndicatorView(viewModel: finalQuizScoreViewModel, frame: CGRectMake(-200, -200, viewWidth, 200))
@@ -189,17 +189,17 @@ class GameViewController: UIViewController {
         }
         
         RACObserve(self.gameViewModel, keyPath: "goBackToHomePage").ignore(false).subscribeNext {
-            (goBackToHomePage) in
+            [unowned self] (goBackToHomePage) in
             self.navigationController?.popViewControllerAnimated(true)
         }
         
         RACObserve(self.gameViewModel, keyPath: "viewStatistics").ignore(false).subscribeNext {
-            (viewStatistics) in
+            [unowned self] (viewStatistics) in
             let gameAnswersStatisticsViewController = GameAnswersStatisticsViewController(answers: self.gameViewModel.answersCollection)
             self.navigationController?.pushViewController(gameAnswersStatisticsViewController, animated: true)            
         }
         
-        RACObserve(self.gameViewModel, keyPath: "enableViewInteraction").skip(1).subscribeNext { (enableViewInteractionFlag) in
+        RACObserve(self.gameViewModel, keyPath: "enableViewInteraction").skip(1).subscribeNext { [unowned self] (enableViewInteractionFlag) in
             if let enableViewInteraction = enableViewInteractionFlag as? Bool {
                 self.enableView(enableViewInteraction)
             }

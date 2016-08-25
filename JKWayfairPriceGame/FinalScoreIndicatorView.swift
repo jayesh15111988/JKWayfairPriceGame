@@ -73,7 +73,7 @@ class FinalScoreIndicatorView: UIView {
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[gameStatsLabel]-[viewStatisticsButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         
         RACObserve(self.viewModel, keyPath: "finalScoreScreenOption").skip(1).subscribeNext {
-            (selectedOption) in             
+            [unowned self] selectedOption in
             self.removeFromSuperview()
         }
     }
