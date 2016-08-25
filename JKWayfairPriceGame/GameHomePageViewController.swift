@@ -6,7 +6,6 @@
 //  Copyright © 2016 Jayesh Kawli Backup. All rights reserved.
 //
 
-import BlocksKit
 import Foundation
 import UIKit
 
@@ -17,7 +16,7 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     let viewModel: GameHomePageViewModel
     let categoryInputTextField: UITextField
     var selectedCategoryIdentifier: String
-    let instructionsViewController: GameInstructionsViewController
+    let instructionsNavigationViewController: UINavigationController
     let beginGameButton: CustomButton
     let beginGameWithDefaultsButton: CustomButton
     
@@ -30,7 +29,9 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.categoryInputTextField.textAlignment = .Center
         self.categoryInputTextField.font = Appearance.defaultFont()
         self.categoryInputTextField.placeholder = "Please Choose Product Category"
-        self.instructionsViewController = GameInstructionsViewController(viewModel: GameInstructionsViewModel(instructionsFileName: "instructions"))
+        
+        let instructionsViewController = GameInstructionsViewController(viewModel: GameInstructionsViewModel(instructionsFileName: "instructions"))
+        self.instructionsNavigationViewController = UINavigationController(rootViewController: instructionsViewController)
         
         beginGameButton = CustomButton()
         beginGameButton.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +50,8 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         beginGameWithDefaultsButton.rac_command = self.viewModel.startGameWithDefaultActionCommand
         
         super.init(nibName: nil, bundle: nil)
-        self.instructionsViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(dismiss))
+        
+        instructionsViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(dismiss))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,9 +67,11 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         let instructionsButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
         instructionsButton.setImage(UIImage(named: "instructions"), forState: .Normal)
-        instructionsButton.bk_whenTapped { [unowned self] in
+        instructionsButton.rac_command = self.viewModel.gameInstructionsActionCommand
+        RACObserve(viewModel, keyPath: "showInstructionsView").ignore(false).subscribeNext { (_) in
             self.showInstructionsView()
         }
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: instructionsButton)
         
         let scrollView = UIScrollView()
@@ -206,7 +210,7 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func showInstructionsView() {
-        self.presentViewController(UINavigationController(rootViewController: instructionsViewController), animated: true, completion: nil)
+        self.presentViewController(instructionsNavigationViewController, animated: true, completion: nil)
     }
     
     func finishSelection() {
@@ -219,7 +223,7 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func dismiss() {
-        self.instructionsViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.instructionsNavigationViewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func buttonsUserInteractionEnable(enable: Bool) {

@@ -6,7 +6,6 @@
 //  Copyright © 2016 Jayesh Kawli Backup. All rights reserved.
 //
 
-import BlocksKit
 import Mantle
 import MTLManagedObjectAdapter
 import Foundation

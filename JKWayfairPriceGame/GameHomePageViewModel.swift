@@ -22,6 +22,7 @@ class GameHomePageViewModel: NSObject {
     dynamic var errorMessage: String
     dynamic var productsLoading: Bool
     dynamic var defaultGameModeStatus: Bool
+    dynamic var showInstructionsView: Bool
     var categoryIdentifier: String
     var startGameActionCommand: RACCommand?
     var startGameWithDefaultActionCommand: RACCommand?
@@ -39,6 +40,7 @@ class GameHomePageViewModel: NSObject {
         self.gameInstructionsViewModel = GameInstructionsViewModel(instructionsFileName: "instructions")
         self.defaultGameModeStatus = true
         self.categoryIdentifier = ""
+        self.showInstructionsView = false
         
         super.init()
         
@@ -61,6 +63,11 @@ class GameHomePageViewModel: NSObject {
             self.productsCollection = []
             self.defaultGameModeStatus = true
             self.loadBaseCategories()
+            return RACSignal.empty()
+        })
+        
+        gameInstructionsActionCommand = RACCommand(signalBlock: { [unowned self] (_) -> RACSignal! in
+            self.showInstructionsView = true
             return RACSignal.empty()
         })
     }

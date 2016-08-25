@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import BlocksKit
 
 class OptionsView: UIView {
     
@@ -32,9 +31,9 @@ class OptionsView: UIView {
             button.backgroundColor = Appearance.buttonBackgroundColor()
             button.titleLabel?.textAlignment = .Center
             button.layer.borderColor = UIColor.lightGrayColor().CGColor
-            button.bk_whenTapped({
-              self.viewEnableInteraction(false)
-              self.selectionClosure?(index)
+            button.rac_signalForControlEvents(.TouchUpInside).subscribeNext({ [unowned self] (_) in
+                self.viewEnableInteraction(false)
+                self.selectionClosure?(index)
             })
             self.addSubview(button)
             buttons.append(button)
