@@ -23,7 +23,7 @@
 		38592DB61D67F26C0051E62F /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DB51D67F26C0051E62F /* GameViewModel.swift */; };
 		38592DB81D67F3A10051E62F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DB71D67F3A10051E62F /* GameViewController.swift */; };
 		38592DBA1D67F5620051E62F /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DB91D67F5620051E62F /* QuizQuestion.swift */; };
-		38592DBC1D67FC080051E62F /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DBB1D67FC080051E62F /* Collections.swift */; };
+		38592DBC1D67FC080051E62F /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DBB1D67FC080051E62F /* Collection.swift */; };
 		38592DBE1D68073B0051E62F /* QuizOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DBD1D68073B0051E62F /* QuizOption.swift */; };
 		38592DC01D6823510051E62F /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DBF1D6823510051E62F /* OptionsView.swift */; };
 		38592DC31D6894AB0051E62F /* placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DC21D6894AB0051E62F /* placeholder_image.png */; };
@@ -49,8 +49,8 @@
 		388B24EF1D66A6FB00638688 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */; };
 		388B24F21D66BD6700638688 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24F11D66BD6700638688 /* Random.swift */; };
 		38EC479D1D6BE51E0004CAA2 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC479C1D6BE51E0004CAA2 /* Appearance.swift */; };
-		38EC479F1D6BE6580004CAA2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC479E1D6BE6580004CAA2 /* Colors.swift */; };
-		38EC47A11D6BE9710004CAA2 /* NavigationControllerAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC47A01D6BE9710004CAA2 /* NavigationControllerAppearance.swift */; };
+		38EC479F1D6BE6580004CAA2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC479E1D6BE6580004CAA2 /* Color.swift */; };
+		38EC47A11D6BE9710004CAA2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC47A01D6BE9710004CAA2 /* UIViewController.swift */; };
 		38EC47A31D6BFC2D0004CAA2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC47A21D6BFC2D0004CAA2 /* CustomButton.swift */; };
 		4BFA059AC206794661184DF4 /* Pods_JKWayfairPriceGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13ACBDD3854AE9286B11FC58 /* Pods_JKWayfairPriceGame.framework */; };
 /* End PBXBuildFile section */
@@ -87,7 +87,7 @@
 		38592DB51D67F26C0051E62F /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		38592DB71D67F3A10051E62F /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		38592DB91D67F5620051E62F /* QuizQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
-		38592DBB1D67FC080051E62F /* Collections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
+		38592DBB1D67FC080051E62F /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		38592DBD1D68073B0051E62F /* QuizOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizOption.swift; sourceTree = "<group>"; };
 		38592DBF1D6823510051E62F /* OptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		38592DC21D6894AB0051E62F /* placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_image.png; sourceTree = "<group>"; };
@@ -113,8 +113,8 @@
 		388B24EE1D66A6FB00638688 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		388B24F11D66BD6700638688 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		38EC479C1D6BE51E0004CAA2 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
-		38EC479E1D6BE6580004CAA2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		38EC47A01D6BE9710004CAA2 /* NavigationControllerAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerAppearance.swift; sourceTree = "<group>"; };
+		38EC479E1D6BE6580004CAA2 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		38EC47A01D6BE9710004CAA2 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		38EC47A21D6BFC2D0004CAA2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BA8833314209F8EF0BC17881 /* Pods-JKWayfairPriceGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGame/Pods-JKWayfairPriceGame.release.xcconfig"; sourceTree = "<group>"; };
 		E50C25C307CF386B805FBA40 /* Pods-JKWayfairPriceGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGame/Pods-JKWayfairPriceGame.debug.xcconfig"; sourceTree = "<group>"; };
@@ -270,9 +270,9 @@
 			isa = PBXGroup;
 			children = (
 				38592DB31D67D51E0051E62F /* GravityTransition.swift */,
-				38592DBB1D67FC080051E62F /* Collections.swift */,
-				38EC479E1D6BE6580004CAA2 /* Colors.swift */,
-				38EC47A01D6BE9710004CAA2 /* NavigationControllerAppearance.swift */,
+				38592DBB1D67FC080051E62F /* Collection.swift */,
+				38EC479E1D6BE6580004CAA2 /* Color.swift */,
+				38EC47A01D6BE9710004CAA2 /* UIViewController.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				388B24EF1D66A6FB00638688 /* RACSignal+Extensions.swift in Sources */,
-				38EC479F1D6BE6580004CAA2 /* Colors.swift in Sources */,
+				38EC479F1D6BE6580004CAA2 /* Color.swift in Sources */,
 				388B24ED1D66A6BF00638688 /* RAC.swift in Sources */,
 				38592DD11D6940550051E62F /* GameAnswersStatisticsViewController.swift in Sources */,
 				38EC47A31D6BFC2D0004CAA2 /* CustomButton.swift in Sources */,
@@ -512,13 +512,13 @@
 				381F11CC1D64053A008C3A4E /* GameHomePageViewModel.swift in Sources */,
 				38592DB61D67F26C0051E62F /* GameViewModel.swift in Sources */,
 				38592DBE1D68073B0051E62F /* QuizOption.swift in Sources */,
-				38592DBC1D67FC080051E62F /* Collections.swift in Sources */,
+				38592DBC1D67FC080051E62F /* Collection.swift in Sources */,
 				38592DDF1D6A710A0051E62F /* GameInstructionsViewController.swift in Sources */,
 				381F11C81D64021C008C3A4E /* ProductApi.swift in Sources */,
 				38592DC91D690B910051E62F /* FinalScoreIndicatorView.swift in Sources */,
 				38592DCB1D690FA80051E62F /* FinalScoreIndicatorViewModel.swift in Sources */,
 				388B24EB1D66A69F00638688 /* RACObserve.swift in Sources */,
-				38EC47A11D6BE9710004CAA2 /* NavigationControllerAppearance.swift in Sources */,
+				38EC47A11D6BE9710004CAA2 /* UIViewController.swift in Sources */,
 				388B24F21D66BD6700638688 /* Random.swift in Sources */,
 				38592DC01D6823510051E62F /* OptionsView.swift in Sources */,
 				38592DCF1D693B630051E62F /* QuizCustomOptions.swift in Sources */,
