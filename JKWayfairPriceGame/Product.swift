@@ -22,12 +22,12 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
     var availability: String = Availability.Unavailable.rawValue
     var imageURL: NSURL? = nil
     var listPrice: NSNumber = 0
-    var listPriceRounded: NSNumber = 0
     var manufacturerIdentifier: NSNumber = 0
     var manufacturerName: String = ""
     var name: String = ""
     var productURL: NSURL? = nil
     var salePrice: NSNumber = 0
+    var salePriceRounded: NSNumber = 0
     var sku: String = ""
     
     static func JSONKeyPathsByPropertyKey() -> [NSObject : AnyObject]! {
@@ -35,12 +35,12 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
         "availability": "has_stock",
         "imageURL": "image_url",
         "listPrice": "list_price",
-        "listPriceRounded": "list_price",
         "manufacturerIdentifier": "manufacturer_id",
         "manufacturerName": "manufacturer_name",
         "name": "name",
         "productURL": "product_url",
         "salePrice": "sale_price",
+        "salePriceRounded": "sale_price",
         "sku": "sku"]
     }
     
@@ -56,10 +56,10 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
         return NSValueTransformer.mtl_valueMappingTransformerWithDictionary([true: "Available", false: "Unavailable"])
     }
     
-    static func listPriceRoundedJSONTransformer() -> NSValueTransformer {
-        return MTLValueTransformer(usingForwardBlock: { (originalListPrice, success, error) -> AnyObject! in
-            if let originalListPrice = originalListPrice as? NSNumber {
-                return round(originalListPrice.doubleValue)
+    static func salePriceRoundedJSONTransformer() -> NSValueTransformer {
+        return MTLValueTransformer(usingForwardBlock: { (originalSalePrice, success, error) -> AnyObject! in
+            if let originalSalePrice = originalSalePrice as? NSNumber {
+                return round(originalSalePrice.doubleValue)
             }
             return 0
         })
@@ -76,7 +76,7 @@ class Product: MTLModel, MTLJSONSerializing, MTLManagedObjectSerializing {
                 "averageOverallRating": "averageOverallRating",
                 "imageURL": "imageURL",
                 "listPrice": "listPrice",
-                "listPriceRounded": "listPriceRounded",
+                "salePriceRounded": "salePriceRounded",
                 "manufacturerIdentifier": "manufacturerIdentifier",
                 "manufacturerName": "manufacturerName",
                 "name": "name",

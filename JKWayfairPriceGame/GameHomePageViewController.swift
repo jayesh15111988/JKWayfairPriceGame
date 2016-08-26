@@ -86,7 +86,7 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.activityIndicatorViewStyle = .WhiteLarge
         activityIndicatorView.hidesWhenStopped = true
-        activityIndicatorView.color = Appearance.defaultAppColor();
+        activityIndicatorView.color = Appearance.defaultAppColor()
         
         let basicInstructionsLabel = UILabel()
         basicInstructionsLabel.translatesAutoresizingMaskIntoConstraints = false

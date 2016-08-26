@@ -39,7 +39,7 @@ class OptionsView: UIView {
             buttons.append(button)
         }
         
-        let views = ["topLeft": buttons[0], "topRight": buttons[1], "bottomLeft": buttons[2], "bottomRight": buttons[3]];
+        let views = ["topLeft": buttons[0], "topRight": buttons[1], "bottomLeft": buttons[2], "bottomRight": buttons[3]]
         
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[topLeft]-[topRight(==topLeft)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[bottomLeft]-[bottomRight(==bottomLeft)]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))

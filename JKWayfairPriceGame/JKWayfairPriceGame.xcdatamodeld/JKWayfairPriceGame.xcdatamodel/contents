@@ -6,12 +6,12 @@
         <attribute name="categoryIdentifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="listPrice" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="listPriceRounded" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="manufacturerIdentifier" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="manufacturerName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="salePrice" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="salePriceRounded" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="sku" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
     </entity>
     <elements>

@@ -60,7 +60,7 @@ class Appearance {
     }
     
     static func smallDefaultFont() -> UIFont {
-        return UIFont(name: "HelveticaNeue-Light", size: 12)!
+        return UIFont(name: "HelveticaNeue-Light", size: 11)!
     }
     
 }
