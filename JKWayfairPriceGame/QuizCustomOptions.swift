@@ -19,7 +19,7 @@ class QuizCustomOptions {
     func priceOptionsOffset() -> Int {
         
         var optionsOffsetFromOriginalPrice: Int
-        switch self.score {
+        switch score {
             case 0..<0.4:
                 optionsOffsetFromOriginalPrice = 12
             case 0.4..<0.7:
@@ -34,7 +34,7 @@ class QuizCustomOptions {
     
     func textColor() -> UIColor {
         var color: UIColor
-        switch self.score {
+        switch score {
             case 0..<0.4:
                 color = Appearance.lowScoreColor()
             case 0.4..<0.7:

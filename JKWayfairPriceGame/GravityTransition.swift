@@ -23,7 +23,6 @@ extension UIView {
     }
     
     func addGravity() {
-        
         if let superView = self.superview {
             let dynamicAnimator = UIDynamicAnimator(referenceView: superview!)
             let gravityBehaviour = UIGravityBehavior(items: [self])
@@ -43,5 +42,4 @@ extension UIView {
             dynamicAnimator.addBehavior(gravityBehaviour)
         }
     }
-    
 }

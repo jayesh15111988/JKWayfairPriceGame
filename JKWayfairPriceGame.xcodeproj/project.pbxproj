@@ -24,7 +24,7 @@
 		38592DBC1D67FC080051E62F /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DBB1D67FC080051E62F /* Collection.swift */; };
 		38592DBE1D68073B0051E62F /* QuizOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DBD1D68073B0051E62F /* QuizOption.swift */; };
 		38592DC01D6823510051E62F /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DBF1D6823510051E62F /* OptionsView.swift */; };
-		38592DC31D6894AB0051E62F /* placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DC21D6894AB0051E62F /* placeholder_image.png */; };
+		38592DC31D6894AB0051E62F /* Placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DC21D6894AB0051E62F /* Placeholder_image.png */; };
 		38592DC51D68964C0051E62F /* ProductWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DC41D68964C0051E62F /* ProductWebViewController.swift */; };
 		38592DC71D6896620051E62F /* ProductWebViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DC61D6896620051E62F /* ProductWebViewerViewModel.swift */; };
 		38592DC91D690B910051E62F /* FinalScoreIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DC81D690B910051E62F /* FinalScoreIndicatorView.swift */; };
@@ -39,7 +39,7 @@
 		38592DDD1D6A70720051E62F /* GameInstructionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DDC1D6A70720051E62F /* GameInstructionsViewModel.swift */; };
 		38592DDF1D6A710A0051E62F /* GameInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38592DDE1D6A710A0051E62F /* GameInstructionsViewController.swift */; };
 		38592DE11D6A71620051E62F /* instructions.json in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE01D6A71620051E62F /* instructions.json */; };
-		38592DE31D6A743E0051E62F /* instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE21D6A743E0051E62F /* instructions.png */; };
+		38592DE31D6A743E0051E62F /* Instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE21D6A743E0051E62F /* Instructions.png */; };
 		38592DE61D6A826E0051E62F /* Available.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE41D6A826E0051E62F /* Available.png */; };
 		38592DE71D6A826E0051E62F /* Unavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 38592DE51D6A826E0051E62F /* Unavailable.png */; };
 		388B24EB1D66A69F00638688 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388B24EA1D66A69F00638688 /* RACObserve.swift */; };
@@ -85,7 +85,7 @@
 		38592DBB1D67FC080051E62F /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		38592DBD1D68073B0051E62F /* QuizOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizOption.swift; sourceTree = "<group>"; };
 		38592DBF1D6823510051E62F /* OptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
-		38592DC21D6894AB0051E62F /* placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_image.png; sourceTree = "<group>"; };
+		38592DC21D6894AB0051E62F /* Placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder_image.png; sourceTree = "<group>"; };
 		38592DC41D68964C0051E62F /* ProductWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductWebViewController.swift; sourceTree = "<group>"; };
 		38592DC61D6896620051E62F /* ProductWebViewerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductWebViewerViewModel.swift; sourceTree = "<group>"; };
 		38592DC81D690B910051E62F /* FinalScoreIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalScoreIndicatorView.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		38592DDC1D6A70720051E62F /* GameInstructionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInstructionsViewModel.swift; sourceTree = "<group>"; };
 		38592DDE1D6A710A0051E62F /* GameInstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInstructionsViewController.swift; sourceTree = "<group>"; };
 		38592DE01D6A71620051E62F /* instructions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = instructions.json; sourceTree = "<group>"; };
-		38592DE21D6A743E0051E62F /* instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructions.png; sourceTree = "<group>"; };
+		38592DE21D6A743E0051E62F /* Instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instructions.png; sourceTree = "<group>"; };
 		38592DE41D6A826E0051E62F /* Available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Available.png; sourceTree = "<group>"; };
 		38592DE51D6A826E0051E62F /* Unavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unavailable.png; sourceTree = "<group>"; };
 		388B24EA1D66A69F00638688 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACObserve.swift; sourceTree = "<group>"; };
@@ -274,8 +274,8 @@
 			children = (
 				38592DE41D6A826E0051E62F /* Available.png */,
 				38592DE51D6A826E0051E62F /* Unavailable.png */,
-				38592DE21D6A743E0051E62F /* instructions.png */,
-				38592DC21D6894AB0051E62F /* placeholder_image.png */,
+				38592DE21D6A743E0051E62F /* Instructions.png */,
+				38592DC21D6894AB0051E62F /* Placeholder_image.png */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -419,10 +419,10 @@
 				38592DE11D6A71620051E62F /* instructions.json in Resources */,
 				38592DE61D6A826E0051E62F /* Available.png in Resources */,
 				38592DDB1D6A5E680051E62F /* ProductBaseCategories.json in Resources */,
-				38592DE31D6A743E0051E62F /* instructions.png in Resources */,
+				38592DE31D6A743E0051E62F /* Instructions.png in Resources */,
 				38592DE71D6A826E0051E62F /* Unavailable.png in Resources */,
 				381F11AD1D6400EA008C3A4E /* LaunchScreen.storyboard in Resources */,
-				38592DC31D6894AB0051E62F /* placeholder_image.png in Resources */,
+				38592DC31D6894AB0051E62F /* Placeholder_image.png in Resources */,
 				381F11AA1D6400EA008C3A4E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

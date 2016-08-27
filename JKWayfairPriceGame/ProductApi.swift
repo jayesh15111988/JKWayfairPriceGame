@@ -12,8 +12,8 @@ import Mantle
 import Foundation
 
 enum DataFormat: String {
-    case json
-    case html
+    case JSON = "json"
+    case HTML = "html"
 }
 
 enum ModelType: String {

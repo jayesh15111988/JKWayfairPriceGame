@@ -99,7 +99,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .whiteColor()
-        self.title = "Price Guessing Game"
+        self.title = "Price Guesser"
         
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -157,7 +157,7 @@ class GameViewController: UIViewController {
             self.view.makeGravityTransition({
                 if let questionObject = questionObject as? QuizQuestion, selectedProduct = self.gameViewModel.selectedProduct {
                     self.productNameLabel.text = selectedProduct.name
-                    self.productImageView.sd_setImageWithURL(selectedProduct.imageURL, placeholderImage: UIImage(named: "placeholder_image"))
+                    self.productImageView.sd_setImageWithURL(selectedProduct.imageURL, placeholderImage: UIImage(named: "Placeholder_image"))
                     self.optionsView.updateWithOptions(questionObject.options)
                     let productURLAvailable = selectedProduct.productURL != nil
                     self.viewProductOnlineButton.userInteractionEnabled = productURLAvailable
@@ -182,7 +182,7 @@ class GameViewController: UIViewController {
                 let viewWidth = self.view.frame.width > 300 ? 300 : self.view.frame.width
                 let finalQuizScoreView = FinalScoreIndicatorView(viewModel: finalQuizScoreViewModel, frame: CGRectMake(-200, -200, viewWidth, 200))
                 self.view.addSubview(finalQuizScoreView)
-                self.snapBehavior = UISnapBehavior(item: finalQuizScoreView, snapToPoint: CGPoint(x: self.view.center.x, y: self.view.center.y - 100))
+                self.snapBehavior = UISnapBehavior(item: finalQuizScoreView, snapToPoint: CGPoint(x: self.view.center.x, y: self.view.center.y))
                 self.snapBehavior?.damping = 0.4
                 self.dynamicAnimator?.addBehavior(self.snapBehavior!)
             }
@@ -195,7 +195,7 @@ class GameViewController: UIViewController {
         
         RACObserve(self.gameViewModel, keyPath: "viewStatistics").ignore(false).subscribeNext {
             [unowned self] (viewStatistics) in
-            let gameAnswersStatisticsViewController = GameAnswersStatisticsViewController(answers: self.gameViewModel.answersCollection)
+            let gameAnswersStatisticsViewController = GameAnswersStatisticsViewController(answers: self.gameViewModel.answersCollection, score: self.gameViewModel.totalScore)
             self.navigationController?.pushViewController(gameAnswersStatisticsViewController, animated: true)            
         }
         

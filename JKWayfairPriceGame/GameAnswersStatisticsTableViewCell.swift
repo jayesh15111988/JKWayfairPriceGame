@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum StatsLabel: Int {
+enum StatsLabelType: Int {
     case Correct = 1
     case Incorrect = 0
     
@@ -17,7 +17,7 @@ enum StatsLabel: Int {
             case .Correct:
                 return Appearance.correctAnswerColor()
             case .Incorrect:
-                return Appearance.inCorrectAnswerColor()
+                return Appearance.incorrectAnswerColor()
         }
     }
 }
@@ -28,11 +28,11 @@ class GameAnswersStatisticsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         self.answersStatsLabel = UILabel()
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         self.answersStatsLabel.translatesAutoresizingMaskIntoConstraints = false
         self.answersStatsLabel.numberOfLines = 0
         self.answersStatsLabel.font = Appearance.defaultFont()
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         self.contentView.addSubview(self.answersStatsLabel)
         
         let views = ["answersStatsLabel": answersStatsLabel]
@@ -40,12 +40,12 @@ class GameAnswersStatisticsTableViewCell: UITableViewCell {
         self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[answersStatsLabel]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func setupWithAnswer(answer: QuizAnswer) {
         answersStatsLabel.text = "\(answer.title)\n\nGiven Answer: \(answer.selectedOption)\n\nCorrect Answer: \(answer.correctOption)"
-        answersStatsLabel.textColor = StatsLabel(rawValue: Int(answer.isCorrect))?.labelColor()
+        answersStatsLabel.textColor = StatsLabelType(rawValue: Int(answer.isCorrect))?.labelColor()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

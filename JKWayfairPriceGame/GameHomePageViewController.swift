@@ -60,13 +60,13 @@ class GameHomePageViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Price Guessing Game"
+        self.title = "Price Guesser"
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.setupAppearance()        
         
         let instructionsButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
-        instructionsButton.setImage(UIImage(named: "instructions"), forState: .Normal)
+        instructionsButton.setImage(UIImage(named: "Instructions"), forState: .Normal)
         instructionsButton.rac_command = self.viewModel.gameInstructionsActionCommand
         RACObserve(viewModel, keyPath: "showInstructionsView").ignore(false).subscribeNext { (_) in
             self.showInstructionsView()

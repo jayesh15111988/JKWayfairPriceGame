@@ -12,10 +12,12 @@ import UIKit
 class GameAnswersStatisticsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let answers: [QuizAnswer]
+    let score: Int
     let tableView: UITableView
     
-    init(answers: [QuizAnswer]) {
+    init(answers: [QuizAnswer], score: Int) {
         self.answers = answers
+        self.score = score
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableFooterView = UITableView()
@@ -35,10 +37,10 @@ class GameAnswersStatisticsViewController: UIViewController, UITableViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Statistics"
+        self.title = "Score: \(self.score)"
         self.automaticallyAdjustsScrollViewInsets = false
         self.view.backgroundColor = .whiteColor()
-        self.view.addSubview(self.tableView)
+        self.view.addSubview(self.tableView)        
         
         let topLayoutGuide = self.topLayoutGuide
         let views: [String: AnyObject] = ["topLayoutGuide": topLayoutGuide, "tableView": tableView]

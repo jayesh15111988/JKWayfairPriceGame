@@ -19,7 +19,7 @@ class FinalScoreIndicatorView: UIView {
         self.backgroundColor = UIColor(hex: 0xbdc3c7)
         self.layer.cornerRadius = 20
         self.layer.borderWidth = 2.0
-        self.layer.borderColor = UIColor(hex: 0x27ae60).CGColor
+        self.layer.borderColor = UIColor(hex: 0x27ae60).CGColor        
         
         let goBackButton = CustomButton()
         goBackButton.translatesAutoresizingMaskIntoConstraints = false

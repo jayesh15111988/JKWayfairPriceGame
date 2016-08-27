@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+enum Font: String {
+    case HelveticaNeue = "HelveticaNeue"
+    case HelveticaNeueMedium = "HelveticaNeue-Medium"
+    case HelveticaNeueLight = "HelveticaNeue-Light"
+}
+
 class Appearance {
     
     static func defaultAppColor() -> UIColor {
@@ -19,12 +25,12 @@ class Appearance {
         return UIColor(hex: 0x8e44ad)
     }
     
-    static func inCorrectAnswerColor() -> UIColor {
+    static func incorrectAnswerColor() -> UIColor {
         return UIColor(hex: 0xc0392b)
     }
     
     static func lowScoreColor() -> UIColor {
-        return self.inCorrectAnswerColor()
+        return self.incorrectAnswerColor()
     }
     
     static func mediumScoreColor() -> UIColor {
@@ -48,19 +54,19 @@ class Appearance {
     }
     
     static func defaultFont() -> UIFont {
-        return UIFont(name: "HelveticaNeue", size: 16)!
+        return UIFont(name: Font.HelveticaNeue.rawValue, size: 16)!
     }
     
     static func titleFont() -> UIFont {
-        return UIFont(name: "HelveticaNeue-Medium", size: 16)!
+        return UIFont(name: Font.HelveticaNeueMedium.rawValue, size: 16)!
     }
     
     static func buttonsFont() -> UIFont {
-        return UIFont(name: "HelveticaNeue-Light", size: 16)!
+        return UIFont(name: Font.HelveticaNeueLight.rawValue, size: 16)!
     }
     
     static func smallDefaultFont() -> UIFont {
-        return UIFont(name: "HelveticaNeue-Light", size: 11)!
+        return UIFont(name: Font.HelveticaNeueLight.rawValue, size: 11)!
     }
     
 }

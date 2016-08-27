@@ -98,7 +98,7 @@ class GameHomePageViewModel: NSObject {
     
     func loadProductsFromAPIwithCategoryIdentifier(categoryIdentifier: String, caching: Bool = false) {
         self.productsLoading = true
-        ProductApi.sharedInstance.productsWith(categoryIdentifier, format: .json, completion: { result in
+        ProductApi.sharedInstance.productsWith(categoryIdentifier, format: .JSON, completion: { result in
             self.storeProducts(result, categoryIdentifier: categoryIdentifier, caching: caching)
         })
     }
