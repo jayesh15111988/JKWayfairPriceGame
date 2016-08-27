@@ -69,4 +69,8 @@ class Appearance {
         return UIFont(name: Font.HelveticaNeueLight.rawValue, size: 11)!
     }
     
+    static func extraLargeFont() -> UIFont {
+        return UIFont(name: Font.HelveticaNeueLight.rawValue, size: 30)!
+    }
+    
 }
