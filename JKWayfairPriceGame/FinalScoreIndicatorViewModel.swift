@@ -41,7 +41,7 @@ class FinalScoreIndicatorViewModel: NSObject {
         let percentageAnswersCorrect = Int(fractionAnswersCorrect * 100)
         self.finalScoreLabelTextColor = QuizCustomOptions(score: fractionAnswersCorrect).textColor()
          
-        self.totalStats = "Total Questions: \(totalNumberOfQuestions) Skipped: \(gameViewModel.skipCount)\n\nPlaceholder\n\nCorrect: \(numberOfCorrectAnswers) / \(percentageAnswersCorrect)%\n\nTotal Score: \(gameViewModel.totalScore)"
+        self.totalStats = "Total Questions: \(totalNumberOfQuestions) Skipped: \(gameViewModel.skipCount)\n\nCorrect: \(numberOfCorrectAnswers) / \(percentageAnswersCorrect)%\n\nTotal Score: \(gameViewModel.totalScore)"
         super.init()
         
         self.goBackButtonActionCommand = RACCommand(signalBlock: { (signal) -> RACSignal! in
