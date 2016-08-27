@@ -28,7 +28,7 @@ class OptionsView: UIView {
             button.layer.borderWidth = 1.0
             button.layer.cornerRadius = 10
             button.titleLabel?.textColor = .whiteColor()
-            button.backgroundColor = Appearance.secondaryButtonBackgroundColor()
+            button.backgroundColor = Appearance.defaultAppColor()
             button.titleLabel?.textAlignment = .Center
             button.layer.borderColor = UIColor.lightGrayColor().CGColor
             button.rac_signalForControlEvents(.TouchUpInside).subscribeNext({ [unowned self] (_) in
