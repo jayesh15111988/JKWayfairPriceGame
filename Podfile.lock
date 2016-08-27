@@ -1,20 +1,5 @@
 PODS:
   - Alamofire (3.4.1)
-  - BlocksKit (2.2.5):
-    - BlocksKit/All (= 2.2.5)
-  - BlocksKit/All (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-    - BlocksKit/MessageUI
-    - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.5)
-  - BlocksKit/DynamicDelegate (2.2.5)
-  - BlocksKit/MessageUI (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
   - Mantle (2.0.7):
     - Mantle/extobjc (= 2.0.7)
   - Mantle/extobjc (2.0.7)
@@ -36,7 +21,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
-  - BlocksKit (~> 2.2)
   - Mantle (~> 2.0)
   - MTLManagedObjectAdapter (~> 1.0)
   - ReactiveCocoa (~> 2.0)
@@ -44,12 +28,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
   MTLManagedObjectAdapter: 631a53432675dcf03a9d90624afb3cececf54631
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 42e4995431faede034e77a8643e95d41dabd2b80
+PODFILE CHECKSUM: 968969e4c38178be2e7b2242b7852addae31e7d5
 
 COCOAPODS: 1.0.1

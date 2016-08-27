@@ -5,7 +5,6 @@ use_frameworks!
 xcodeproj 'JKWayfairPriceGame'
 
 target ‘JKWayfairPriceGame’ do
-    pod 'BlocksKit', '~> 2.2'
     pod 'SDWebImage', '~> 3.7'
     pod 'ReactiveCocoa', '~> 2.0'
     pod 'Mantle', '~> 2.0'
