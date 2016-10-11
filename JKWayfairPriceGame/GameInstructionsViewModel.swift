@@ -11,7 +11,7 @@ import Foundation
 class GameInstructionsViewModel {
     let instructions: String
     init(instructionsFileName: String) {
-        if let instructions = JSONReader().readJSONFromFileWith(instructionsFileName) as? [String: AnyObject], instructionsContent = instructions[instructionsFileName] as? String {
+        if let instructions = JSONReader().readJSONFromFileWith(instructionsFileName) as? [String: AnyObject], let instructionsContent = instructions[instructionsFileName] as? String {
             self.instructions = instructionsContent
         } else {
             self.instructions = ""

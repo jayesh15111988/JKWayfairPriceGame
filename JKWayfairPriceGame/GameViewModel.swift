@@ -77,7 +77,7 @@ class GameViewModel: NSObject {
     }
     
     func addToAnswersCollectionWithSelectedOptionIndex(index: Int) {
-        if let selectedProduct = self.selectedProduct, questionObject = self.questionObject {
+        if let selectedProduct = self.selectedProduct, let questionObject = self.questionObject {
             self.answersCollection.append(QuizAnswer(title: selectedProduct.name, options: questionObject.options, selectedOption: index))
         }
     }

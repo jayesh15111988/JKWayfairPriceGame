@@ -50,6 +50,7 @@
 		38EC47A11D6BE9710004CAA2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC47A01D6BE9710004CAA2 /* UIViewController.swift */; };
 		38EC47A31D6BFC2D0004CAA2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC47A21D6BFC2D0004CAA2 /* CustomButton.swift */; };
 		4BFA059AC206794661184DF4 /* Pods_JKWayfairPriceGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13ACBDD3854AE9286B11FC58 /* Pods_JKWayfairPriceGame.framework */; };
+		CEC49B46C8EDB9FA49FE657A /* Pods_JKWayfairPriceGameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5BCF5972830D41D8D2E8D /* Pods_JKWayfairPriceGameTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		13ACBDD3854AE9286B11FC58 /* Pods_JKWayfairPriceGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKWayfairPriceGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		381073BC154EBDAC44A8BB70 /* Pods-JKWayfairPriceGameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGameTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGameTests/Pods-JKWayfairPriceGameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		381F119C1D6400EA008C3A4E /* JKWayfairPriceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKWayfairPriceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		381F119F1D6400EA008C3A4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		381F11A71D6400EA008C3A4E /* JKWayfairPriceGame.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JKWayfairPriceGame.xcdatamodel; sourceTree = "<group>"; };
@@ -110,6 +112,8 @@
 		38EC479E1D6BE6580004CAA2 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		38EC47A01D6BE9710004CAA2 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		38EC47A21D6BFC2D0004CAA2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		83021E4BC310CD1FC95D40BF /* Pods-JKWayfairPriceGameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGameTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGameTests/Pods-JKWayfairPriceGameTests.release.xcconfig"; sourceTree = "<group>"; };
+		B4D5BCF5972830D41D8D2E8D /* Pods_JKWayfairPriceGameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKWayfairPriceGameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA8833314209F8EF0BC17881 /* Pods-JKWayfairPriceGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGame/Pods-JKWayfairPriceGame.release.xcconfig"; sourceTree = "<group>"; };
 		E50C25C307CF386B805FBA40 /* Pods-JKWayfairPriceGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGame/Pods-JKWayfairPriceGame.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC49B46C8EDB9FA49FE657A /* Pods_JKWayfairPriceGameTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +143,8 @@
 			children = (
 				E50C25C307CF386B805FBA40 /* Pods-JKWayfairPriceGame.debug.xcconfig */,
 				BA8833314209F8EF0BC17881 /* Pods-JKWayfairPriceGame.release.xcconfig */,
+				381073BC154EBDAC44A8BB70 /* Pods-JKWayfairPriceGameTests.debug.xcconfig */,
+				83021E4BC310CD1FC95D40BF /* Pods-JKWayfairPriceGameTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -328,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				13ACBDD3854AE9286B11FC58 /* Pods_JKWayfairPriceGame.framework */,
+				B4D5BCF5972830D41D8D2E8D /* Pods_JKWayfairPriceGameTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -359,9 +367,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 381F11BF1D6400EA008C3A4E /* Build configuration list for PBXNativeTarget "JKWayfairPriceGameTests" */;
 			buildPhases = (
+				D79BF59D169439692EA61D31 /* [CP] Check Pods Manifest.lock */,
 				381F11AF1D6400EA008C3A4E /* Sources */,
 				381F11B01D6400EA008C3A4E /* Frameworks */,
 				381F11B11D6400EA008C3A4E /* Resources */,
+				1D189EADBD3B5E458B068142 /* [CP] Embed Pods Frameworks */,
+				6F0739BF0A6F3370C4B246C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -388,6 +399,7 @@
 					};
 					381F11B21D6400EA008C3A4E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 381F119B1D6400EA008C3A4E;
 					};
 				};
@@ -437,6 +449,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1D189EADBD3B5E458B068142 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKWayfairPriceGameTests/Pods-JKWayfairPriceGameTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F0739BF0A6F3370C4B246C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKWayfairPriceGameTests/Pods-JKWayfairPriceGameTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8C84F97DB361E1991BB16B00 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,6 +509,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKWayfairPriceGame/Pods-JKWayfairPriceGame-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D79BF59D169439692EA61D31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		E2D402DE2B4E38BAE44FBA1B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -479,7 +536,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -650,6 +707,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jayeshKawli.JKWayfairPriceGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -664,30 +722,35 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jayeshKawli.JKWayfairPriceGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		381F11C01D6400EA008C3A4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 381073BC154EBDAC44A8BB70 /* Pods-JKWayfairPriceGameTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = JKWayfairPriceGameTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jayeshKawli.JKWayfairPriceGameTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JKWayfairPriceGame.app/JKWayfairPriceGame";
 			};
 			name = Debug;
 		};
 		381F11C11D6400EA008C3A4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83021E4BC310CD1FC95D40BF /* Pods-JKWayfairPriceGameTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = JKWayfairPriceGameTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jayeshKawli.JKWayfairPriceGameTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JKWayfairPriceGame.app/JKWayfairPriceGame";
 			};
 			name = Release;

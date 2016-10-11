@@ -155,7 +155,7 @@ class GameViewController: UIViewController {
         
         RACObserve(self.gameViewModel, keyPath: "questionObject").ignore(nil).subscribeNext { [unowned self] (questionObject) in
             self.view.makeGravityTransition({
-                if let questionObject = questionObject as? QuizQuestion, selectedProduct = self.gameViewModel.selectedProduct {
+                if let questionObject = questionObject as? QuizQuestion, let selectedProduct = self.gameViewModel.selectedProduct {
                     self.productNameLabel.text = selectedProduct.name
                     self.productImageView.sd_setImageWithURL(selectedProduct.imageURL, placeholderImage: UIImage(named: "Placeholder_image"))
                     self.optionsView.updateWithOptions(questionObject.options)
