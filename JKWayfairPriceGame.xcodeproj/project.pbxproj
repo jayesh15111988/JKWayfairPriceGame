@@ -51,6 +51,7 @@
 		38EC47A31D6BFC2D0004CAA2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EC47A21D6BFC2D0004CAA2 /* CustomButton.swift */; };
 		4BFA059AC206794661184DF4 /* Pods_JKWayfairPriceGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13ACBDD3854AE9286B11FC58 /* Pods_JKWayfairPriceGame.framework */; };
 		CEC49B46C8EDB9FA49FE657A /* Pods_JKWayfairPriceGameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D5BCF5972830D41D8D2E8D /* Pods_JKWayfairPriceGameTests.framework */; };
+		E3929EA31DAD838E00E18CF3 /* GameHomePageViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3929EA21DAD838E00E18CF3 /* GameHomePageViewModelSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		83021E4BC310CD1FC95D40BF /* Pods-JKWayfairPriceGameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGameTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGameTests/Pods-JKWayfairPriceGameTests.release.xcconfig"; sourceTree = "<group>"; };
 		B4D5BCF5972830D41D8D2E8D /* Pods_JKWayfairPriceGameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKWayfairPriceGameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA8833314209F8EF0BC17881 /* Pods-JKWayfairPriceGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGame/Pods-JKWayfairPriceGame.release.xcconfig"; sourceTree = "<group>"; };
+		E3929EA21DAD838E00E18CF3 /* GameHomePageViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHomePageViewModelSpec.swift; sourceTree = "<group>"; };
 		E50C25C307CF386B805FBA40 /* Pods-JKWayfairPriceGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGame/Pods-JKWayfairPriceGame.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +200,7 @@
 			children = (
 				381F11B71D6400EA008C3A4E /* JKWayfairPriceGameTests.swift */,
 				381F11B91D6400EA008C3A4E /* Info.plist */,
+				E3929EA21DAD838E00E18CF3 /* GameHomePageViewModelSpec.swift */,
 			);
 			path = JKWayfairPriceGameTests;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				381F11B81D6400EA008C3A4E /* JKWayfairPriceGameTests.swift in Sources */,
+				E3929EA31DAD838E00E18CF3 /* GameHomePageViewModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
