@@ -56,6 +56,7 @@
 		E3929EA91DAD9E0D00E18CF3 /* QuizCustomOptionsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3929EA81DAD9E0D00E18CF3 /* QuizCustomOptionsSpec.swift */; };
 		E3929EAB1DAD9F5E00E18CF3 /* QuizQuestionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3929EAA1DAD9F5E00E18CF3 /* QuizQuestionSpec.swift */; };
 		E3929EAD1DADA35F00E18CF3 /* QuizAnswerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3929EAC1DADA35F00E18CF3 /* QuizAnswerSpec.swift */; };
+		E3929EB31DAE7AE500E18CF3 /* GameViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3929EB21DAE7AE500E18CF3 /* GameViewModelSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		E3929EA81DAD9E0D00E18CF3 /* QuizCustomOptionsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCustomOptionsSpec.swift; sourceTree = "<group>"; };
 		E3929EAA1DAD9F5E00E18CF3 /* QuizQuestionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizQuestionSpec.swift; sourceTree = "<group>"; };
 		E3929EAC1DADA35F00E18CF3 /* QuizAnswerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizAnswerSpec.swift; sourceTree = "<group>"; };
+		E3929EB21DAE7AE500E18CF3 /* GameViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModelSpec.swift; sourceTree = "<group>"; };
 		E50C25C307CF386B805FBA40 /* Pods-JKWayfairPriceGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKWayfairPriceGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKWayfairPriceGame/Pods-JKWayfairPriceGame.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +215,7 @@
 				E3929EA81DAD9E0D00E18CF3 /* QuizCustomOptionsSpec.swift */,
 				E3929EAA1DAD9F5E00E18CF3 /* QuizQuestionSpec.swift */,
 				E3929EAC1DADA35F00E18CF3 /* QuizAnswerSpec.swift */,
+				E3929EB21DAE7AE500E18CF3 /* GameViewModelSpec.swift */,
 			);
 			path = JKWayfairPriceGameTests;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				E3929EAD1DADA35F00E18CF3 /* QuizAnswerSpec.swift in Sources */,
 				E3929EA31DAD838E00E18CF3 /* GameHomePageViewModelSpec.swift in Sources */,
 				E3929EA71DAD8E8500E18CF3 /* FinalScoreIndicatorViewModelSpec.swift in Sources */,
+				E3929EB31DAE7AE500E18CF3 /* GameViewModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
