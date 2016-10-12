@@ -68,6 +68,31 @@ class GameHomePageViewModelSpec: QuickSpec {
                     expect(gamePageViewModel.showInstructionsView).to(beTrue())
                 })
             })
+            
+            describe("Verifying the action to store the selected products", {
+                it("Should update state correctly when the result with product models is passed to function", closure: { 
+                    let products = try? [Product(dictionary: ["availability": "Available", "imageURL": "", "listPrice": 100, "manufacturerIdentifier": 200, "manufacturerName": "Random Manufacturer", "name": "A very good product", "salePrice": 50, "sku": "SK243"])]
+                    if let products = products {
+                        let result = Result.SuccessMantleModels(products)
+                        gamePageViewModel.storeProducts(result, categoryIdentifier: "200")
+                        expect(gamePageViewModel.productsCollection).to(equal(products))
+                        expect(gamePageViewModel.productsLoading).to(beFalse())
+                        expect(gamePageViewModel.categoryIdentifier).to(equal("200"))
+                        expect(gamePageViewModel.gameViewModel).notTo(beNil())
+                        expect(gamePageViewModel.defaultGameModeStatus).to(beFalse())
+                        
+                    }
+                })
+
+                it("Should update the error message string appropriately when storeProducts method encounters an error", closure: { 
+                    let error = NSError(domain: "Wayfair", code: 300, userInfo: [NSLocalizedDescriptionKey: "Something went terribly wrong here"])
+                    let result = Result.Failure(error)
+                    gamePageViewModel.storeProducts(result, categoryIdentifier: "419247")
+                    expect(gamePageViewModel.defaultGameModeStatus).to(beTrue())
+                    expect(gamePageViewModel.errorMessage).to(equal("Something went terribly wrong here"))
+                    
+                })
+            })
         }
     }
 }
