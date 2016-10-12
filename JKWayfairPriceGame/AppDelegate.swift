@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homePageViewController = GameHomePageViewController(viewModel: GameHomePageViewModel())
         self.window?.rootViewController = UINavigationController(rootViewController: homePageViewController)
         self.window?.frame = UIScreen.mainScreen().bounds
-        self.window?.makeKeyAndVisible()
-        
+        self.window?.makeKeyAndVisible()        
         return true
     }
 

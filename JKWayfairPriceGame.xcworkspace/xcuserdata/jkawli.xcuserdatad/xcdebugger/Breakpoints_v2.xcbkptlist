@@ -86,27 +86,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JKWayfairPriceGameTests/QuizQuestionSpec.swift"
-            timestampString = "497918655.175219"
+            timestampString = "497990003.712763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "spec()"
-            landmarkType = "7">
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "==(_:_:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JKWayfairPriceGameTests/QuizQuestionSpec.swift"
-            timestampString = "497918655.175219"
+            timestampString = "497990250.688465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
@@ -115,33 +115,33 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "JKWayfairPriceGameTests.QuizQuestionSpec.(spec () -&gt; ()).(closure #1).(closure #1)"
                   moduleName = "JKWayfairPriceGameTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jkawli/git/JKWayfairPriceGame/JKWayfairPriceGameTests/QuizQuestionSpec.swift"
-                  timestampString = "497918537.381692"
+                  timestampString = "497991425.995199"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
                   offsetFromSymbolStart = "264">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "JKWayfairPriceGameTests.QuizQuestionSpec.(spec () -&gt; ()).(closure #1).(closure #1).(implicit closure #1)"
                   moduleName = "JKWayfairPriceGameTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jkawli/git/JKWayfairPriceGame/JKWayfairPriceGameTests/QuizQuestionSpec.swift"
-                  timestampString = "497918537.383291"
+                  timestampString = "497991425.997037"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
@@ -153,14 +153,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JKWayfairPriceGameTests/QuizQuestionSpec.swift"
-            timestampString = "497918647.00514"
+            filePath = "JKWayfairPriceGameTests/DownloadFileSpec.swift"
+            timestampString = "497991413.33246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "==(_:_:)"
-            landmarkType = "9">
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "spec()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JKWayfairPriceGameTests.DownloadFileSpec.(spec () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "JKWayfairPriceGameTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jkawli/git/JKWayfairPriceGame/JKWayfairPriceGameTests/DownloadFileSpec.swift"
+                  timestampString = "497991425.999648"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JKWayfairPriceGameTests.DownloadFileSpec.(spec () -&gt; ()).(closure #1).(closure #1).(implicit closure #1)"
+                  moduleName = "JKWayfairPriceGameTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jkawli/git/JKWayfairPriceGame/JKWayfairPriceGameTests/DownloadFileSpec.swift"
+                  timestampString = "497991426.001577"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
