@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8490DF66830DD0B60DD605D507145BB"
+               BlueprintIdentifier = "5AB7FD3DE4CA8E2C64EF32081DB028F9"
                BuildableName = "Pods_JKWayfairPriceGame.framework"
                BlueprintName = "Pods-JKWayfairPriceGame"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E8490DF66830DD0B60DD605D507145BB"
+            BlueprintIdentifier = "5AB7FD3DE4CA8E2C64EF32081DB028F9"
             BuildableName = "Pods_JKWayfairPriceGame.framework"
             BlueprintName = "Pods-JKWayfairPriceGame"
             ReferencedContainer = "container:Pods.xcodeproj">
