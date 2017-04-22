@@ -16,9 +16,9 @@ class ProductCategory: MTLModel, MTLJSONSerializing {
     var categoryIdentifier: NSNumber = 0
     
     static func JSONKeyPathsByPropertyKey() -> [NSObject : AnyObject]! {
-        return ["categoryName": "category_name",
-                "imageURL": "image_url",
-                "categoryURL": "category_url",
+        return ["categoryName": "display_name",
+                "imageURL": "image_info.image_url",
+                "categoryURL": "category_link",
                 "categoryIdentifier": "category_id"]
     }
     

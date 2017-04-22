@@ -37,14 +37,14 @@ class ProductApi {
     private init() {
         baseURLString = "https://www.wayfair.com/v/category/display"
     }
-    
+
     func productsWith(categoryIdentifier: String, format: DataFormat, completion: (Result) -> Void){
-        Alamofire.request(.GET, self.baseURLString, parameters: ["category_id": categoryIdentifier, "_format": format.rawValue], encoding: .URL, headers: nil).validate(statusCode: 200..<300).responseJSON { response in
+        Alamofire.request(.GET, self.baseURLString, parameters: ["category_id": categoryIdentifier, "_show_summary": "1"], encoding: .URL, headers: ["Accept": "application/json", "User-Agent": "WayfairApp/37 Mobile (iPhone; iOS 9.1; Scale/2.00) DebugBuild"]).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {
             case .Success(let data):
                 if let data = data as? [String: AnyObject] {
                     
-                    if let collection = data["product_collection"] as? [[String: AnyObject]] {
+                    if let collection = data["response"]!["product_collection"] as? [[String: AnyObject]] {
                     
                         do {
                             if let productsCollection = try MTLJSONAdapter.modelsOfClass(Product.self, fromJSONArray: collection) as? [Product] {
@@ -59,7 +59,7 @@ class ProductApi {
                         } catch let error as NSError {
                             completion(.Failure(error))
                         }
-                    } else if let collection = data["subcategories"] as? [[String: AnyObject]] {
+                    } else if let collection = data["response"]!["subcategories"] as? [[String: AnyObject]] {
                         do {
                             if let productCategoriesCollection = try MTLJSONAdapter.modelsOfClass(ProductCategory.self, fromJSONArray: collection) as? [ProductCategory] {
                                 completion(.SuccessMantleModels(productCategoriesCollection))

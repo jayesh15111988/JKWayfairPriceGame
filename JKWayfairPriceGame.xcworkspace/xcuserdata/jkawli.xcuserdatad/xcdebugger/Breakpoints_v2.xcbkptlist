@@ -6,15 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JKWayfairPriceGame/ProductApi.swift"
-            timestampString = "497904533.175681"
+            timestampString = "514522934.873547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "productsWith(categoryIdentifier:format:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -113,38 +113,6 @@
             endingLineNumber = "23"
             landmarkName = "spec()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "JKWayfairPriceGameTests.QuizQuestionSpec.(spec () -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "JKWayfairPriceGameTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jkawli/git/JKWayfairPriceGame/JKWayfairPriceGameTests/QuizQuestionSpec.swift"
-                  timestampString = "497991425.995199"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "264">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "JKWayfairPriceGameTests.QuizQuestionSpec.(spec () -&gt; ()).(closure #1).(closure #1).(implicit closure #1)"
-                  moduleName = "JKWayfairPriceGameTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jkawli/git/JKWayfairPriceGame/JKWayfairPriceGameTests/QuizQuestionSpec.swift"
-                  timestampString = "497991425.997037"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -161,38 +129,261 @@
             endingLineNumber = "21"
             landmarkName = "spec()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JKWayfairPriceGame/ProductApi.swift"
+            timestampString = "514522757.780564"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "productsWith(categoryIdentifier:format:completion:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "JKWayfairPriceGameTests.DownloadFileSpec.(spec () -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "JKWayfairPriceGameTests"
+                  symbolName = "JKWayfairPriceGame.ProductApi.productsWith (Swift.String, format : JKWayfairPriceGame.DataFormat, completion : (JKWayfairPriceGame.Result) -&gt; ()) -&gt; ()"
+                  moduleName = "JKWayfairPriceGame"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jkawli/git/JKWayfairPriceGame/JKWayfairPriceGameTests/DownloadFileSpec.swift"
-                  timestampString = "497991425.999648"
+                  urlString = "file:///Users/jkawli/Desktop/JKWayfairPriceGame/JKWayfairPriceGame/ProductApi.swift"
+                  timestampString = "514523618.300477"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "80">
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "63">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "JKWayfairPriceGameTests.DownloadFileSpec.(spec () -&gt; ()).(closure #1).(closure #1).(implicit closure #1)"
-                  moduleName = "JKWayfairPriceGameTests"
+                  symbolName = "JKWayfairPriceGame.ProductApi.(productsWith (Swift.String, format : JKWayfairPriceGame.DataFormat, completion : (JKWayfairPriceGame.Result) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "JKWayfairPriceGame"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jkawli/git/JKWayfairPriceGame/JKWayfairPriceGameTests/DownloadFileSpec.swift"
-                  timestampString = "497991426.001577"
+                  urlString = "file:///Users/jkawli/Desktop/JKWayfairPriceGame/JKWayfairPriceGame/ProductApi.swift"
+                  timestampString = "514523618.302178"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "19">
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "75">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JKWayfairPriceGame/ProductApi.swift"
+            timestampString = "514522966.750158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "productsWith(categoryIdentifier:format:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JKWayfairPriceGame/ProductApi.swift"
+            timestampString = "514523050.462874"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "productsWith(categoryIdentifier:format:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JKWayfairPriceGame/ProductApi.swift"
+            timestampString = "514523051.803334"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "productsWith(categoryIdentifier:format:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JKWayfairPriceGame.ProductApi.(productsWith (Swift.String, format : JKWayfairPriceGame.DataFormat, completion : (JKWayfairPriceGame.Result) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "JKWayfairPriceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jkawli/Desktop/JKWayfairPriceGame/JKWayfairPriceGame/ProductApi.swift"
+                  timestampString = "514523103.086178"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "2471">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JKWayfairPriceGame.ProductApi.(productsWith (Swift.String, format : JKWayfairPriceGame.DataFormat, completion : (JKWayfairPriceGame.Result) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "JKWayfairPriceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jkawli/Desktop/JKWayfairPriceGame/JKWayfairPriceGame/ProductApi.swift"
+                  timestampString = "514523103.087702"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "2523">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JKWayfairPriceGame.ProductApi.(productsWith (Swift.String, format : JKWayfairPriceGame.DataFormat, completion : (JKWayfairPriceGame.Result) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "JKWayfairPriceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jkawli/Desktop/JKWayfairPriceGame/JKWayfairPriceGame/ProductApi.swift"
+                  timestampString = "514523103.089312"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "3252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JKWayfairPriceGame/ProductApi.swift"
+            timestampString = "514523279.31073"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "productsWith(categoryIdentifier:format:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JKWayfairPriceGame/GameHomePageViewModel.swift"
+            timestampString = "514523518.710884"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "loadBaseCategories()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JKWayfairPriceGame/GameHomePageViewModel.swift"
+            timestampString = "514523521.289985"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "loadBaseCategories()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JKWayfairPriceGame/GameHomePageViewController.swift"
+            timestampString = "514523553.879284"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JKWayfairPriceGame.GameHomePageViewController.(viewDidLoad () -&gt; ()).(closure #6)"
+                  moduleName = "JKWayfairPriceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jkawli/Desktop/JKWayfairPriceGame/JKWayfairPriceGame/GameHomePageViewController.swift"
+                  timestampString = "514523618.316553"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JKWayfairPriceGame.GameHomePageViewController.(viewDidLoad () -&gt; ()).(closure #6)"
+                  moduleName = "JKWayfairPriceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jkawli/Desktop/JKWayfairPriceGame/JKWayfairPriceGame/GameHomePageViewController.swift"
+                  timestampString = "514523618.317873"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "199">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JKWayfairPriceGame/GameHomePageViewController.swift"
+            timestampString = "514523632.358337"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
