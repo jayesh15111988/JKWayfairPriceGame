@@ -3,7 +3,7 @@ A simple price guessing game for Wayfair Products
 
 This README file describes the app, its features and usage. It is organized in following sections.
 
-###1. Page designs
+### 1. Page designs
 
  * Home page 
     
@@ -32,7 +32,7 @@ This README file describes the app, its features and usage. It is organized in f
      ![alt text][StatsScreen]
    
 
-###2. Features and how to use
+### 2. Features and how to use
 
    *The app works in two modes*
 
@@ -60,7 +60,7 @@ This README file describes the app, its features and usage. It is organized in f
  ![alt text][ResultScreen]
 
 
-###3. Technical details
+### 3. Technical details
 
  App uses core data to perform products caching. When user selects any category, all the products from it are stored locally and the quiz is started. When app first launches, it caches all the products belonging to default category (`419247`). When caching is complete, app retrieves records from database and begins the quiz.
 
@@ -77,7 +77,7 @@ This README file describes the app, its features and usage. It is organized in f
   App is written with [MVVM](https://www.objc.io/issues/13-architecture/mvvm/) style for easy maintenance and unit testing. In order to facilitate MVVM, I am using [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa/) functional reactive library
 
 
-###4. Third party libraries
+### 4. Third party libraries
 
  App makes use of third party library to improve performance and to ease the burden of extra implementation as follows. 
 
@@ -92,7 +92,7 @@ This README file describes the app, its features and usage. It is organized in f
  5. [Alamofire](https://github.com/Alamofire/Alamofire) - A networking framework to download data from remote server in the form of `JSON` payload
 
 
-###5. Future enhancements
+### 5. Future enhancements
 
  1. Writing unit tests to verify the app behavior based on user actions. Since app written with `MVVM` style, it is much more convenient to write tests as compared to regular `MVC` architecture
 
@@ -104,7 +104,7 @@ This README file describes the app, its features and usage. It is organized in f
 
  5. Adding cheat mode - This will allow users to hide any two incorrect options, easing the choice of correct guess
 
-###6. Copyright info
+### 6. Copyright info
 
  1. APIs - App makes use of REST APIs provided by Wayfair to download and display data. This includes endpoints similar to,
 
@@ -116,11 +116,11 @@ This README file describes the app, its features and usage. It is organized in f
      2. http://www168.lunapic.com
      3. http://www.greenmountainsports.com/
 
-###App demo
+### App demo
 
 ![alt text][PriceGuessingGameDemo]
 
-###7. Supported devices
+### 7. Supported devices
   App is visually tested on following devices on simulator (running iOS 9.*) and works well without any major glitches
   1. iPhone 4s, 5, 5s (Simulator and an actual device), 6, 6s, 6s Plus
   2. iPad 2, Air 2, Pro 2
